@@ -1,0 +1,3905 @@
+ <table border="2px" id="apyreport" class="table table-hover table-bordered text-center">
+
+      <thead>
+        <!--tr>
+          <th rowspan="3">S.No.</th>
+          <th rowspan="3">State</th>
+          <th rowspan="3">District</th>
+          <th rowspan="3">Year</th>
+          <pre>Array
+(
+    [38] => Array
+        (
+            [crop_name] => Black pepper
+            [session] => Array
+                (
+                    [Y] => Array
+                        (
+                            [session_id] => Y
+                            [session_name] => Whole Year
+                        )
+
+                )
+
+        )
+
+)
+</pre>          <th colspan="3" class="text-center">Black pepper</th>
+
+                              <tr>
+                
+              <th colspan="3">Whole Year</th>
+                            </tr>
+                          <tr>
+                <th>A</th>
+                <th>P</th>
+                <th>Y</th>
+              </tr>
+
+
+            
+
+            
+
+                </tr-->
+        <!-- tr>
+          <th colspan="3">Season 1</th>
+          <th colspan="3">Season 2</th>
+        </tr>
+        <tr scope="">
+          <th scope="colgroup">A</th>
+          <th scope="colgroup">P</th>
+          <th scope="colgroup">Y</th>
+
+          <th scope="colgroup">A</th>
+          <th scope="colgroup">P</th>
+          <th scope="colgroup">Y</th>
+        </tr -->
+		<tr>
+			<!-- th rowspan="3">S.No.</th -->
+			<th rowspan="3">State</th>
+			<th rowspan="3">District</th>
+			<th rowspan="3">Year</th>
+							<th colspan="3">Black pepper</th>					  </tr>
+		  <tr>
+							<th colspan="3">Whole Year</th>						</tr>
+			<tr>
+							<th count="1">Area (Hectare)</th><th count="1">Production (Tonnes)</th><th count="1">Yield (Tonne/Hectare)</th>						</tr>
+      </thead>
+
+      <tbody>
+        
+        <tr>
+          <!-- td rowspan="351">1</td -->
+          <td rowspan="351">1. Karnataka</td>
+          <td rowspan="3">1. Bagalkot</td>
+
+          <td>2013 - 2014</td>
+                    <td>6.00</td>
+          <td>15.00</td>
+          <td>
+            2.50          </td>
+        
+
+        </tr>
+                  <tr>
+                        <td>2021 - 2022</td>
+                        <td>62.00</td>
+            <td>33.80</td>
+            <td>
+              0.55            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bagalkot</td -->
+              <td>2022 - 2023</td>
+                            <td>7.00</td>
+              <td>2.67</td>
+              <td>
+                0.38              </td>
+            
+
+            </tr>
+                          <tr>
+                        <td rowspan="16">2. Bangalore rural</td>
+                      <td>2001 - 2002</td>
+                        <td>5.00</td>
+            <td>12.00</td>
+            <td>
+              2.40            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bangalore rural</td -->
+              <td>2002 - 2003</td>
+                            <td>2.00</td>
+              <td>5.00</td>
+              <td>
+                2.50              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bangalore rural</td -->
+              <td>2003 - 2004</td>
+                            <td>3.00</td>
+              <td>7.00</td>
+              <td>
+                2.33              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bangalore rural</td -->
+              <td>2004 - 2005</td>
+                            <td>26.00</td>
+              <td>63.00</td>
+              <td>
+                2.42              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bangalore rural</td -->
+              <td>2005 - 2006</td>
+                            <td>1.00</td>
+              <td>2.00</td>
+              <td>
+                2.00              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bangalore rural</td -->
+              <td>2007 - 2008</td>
+                            <td>1.00</td>
+              <td>3.00</td>
+              <td>
+                3.00              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bangalore rural</td -->
+              <td>2008 - 2009</td>
+                            <td>1.00</td>
+              <td>4.00</td>
+              <td>
+                4.00              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bangalore rural</td -->
+              <td>2009 - 2010</td>
+                            <td>1.00</td>
+              <td>4.00</td>
+              <td>
+                4.00              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bangalore rural</td -->
+              <td>2010 - 2011</td>
+                            <td>1.00</td>
+              <td>0.60</td>
+              <td>
+                0.60              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bangalore rural</td -->
+              <td>2012 - 2013</td>
+                            <td>1.00</td>
+              <td>3.00</td>
+              <td>
+                3.00              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bangalore rural</td -->
+              <td>2013 - 2014</td>
+                            <td>1.00</td>
+              <td>2.00</td>
+              <td>
+                2.00              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bangalore rural</td -->
+              <td>2014 - 2015</td>
+                            <td>1.00</td>
+              <td>0.60</td>
+              <td>
+                0.60              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bangalore rural</td -->
+              <td>2015 - 2016</td>
+                            <td>2.00</td>
+              <td>1.50</td>
+              <td>
+                0.75              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bangalore rural</td -->
+              <td>2020 - 2021</td>
+                            <td>12.00</td>
+              <td>5.70</td>
+              <td>
+                0.48              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bangalore rural</td -->
+              <td>2021 - 2022</td>
+                            <td>11.00</td>
+              <td>5.90</td>
+              <td>
+                0.54              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bangalore rural</td -->
+              <td>2022 - 2023</td>
+                            <td>6.00</td>
+              <td>3.40</td>
+              <td>
+                0.57              </td>
+            
+
+            </tr>
+                          <tr>
+                        <td rowspan="7">3. Belgaum</td>
+                      <td>2012 - 2013</td>
+                        <td>5.00</td>
+            <td>14.00</td>
+            <td>
+              2.80            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Belgaum</td -->
+              <td>2013 - 2014</td>
+                            <td>5.00</td>
+              <td>12.00</td>
+              <td>
+                2.40              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Belgaum</td -->
+              <td>2015 - 2016</td>
+                            <td>3.00</td>
+              <td>2.30</td>
+              <td>
+                0.77              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Belgaum</td -->
+              <td>2016 - 2017</td>
+                            <td>6.00</td>
+              <td>3.60</td>
+              <td>
+                0.60              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Belgaum</td -->
+              <td>2020 - 2021</td>
+                            <td>15.00</td>
+              <td>7.10</td>
+              <td>
+                0.47              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Belgaum</td -->
+              <td>2021 - 2022</td>
+                            <td>46.00</td>
+              <td>25.20</td>
+              <td>
+                0.55              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Belgaum</td -->
+              <td>2022 - 2023</td>
+                            <td>19.00</td>
+              <td>9.90</td>
+              <td>
+                0.52              </td>
+            
+
+            </tr>
+                          <tr>
+                        <td rowspan="3">4. Bellary</td>
+                      <td>2020 - 2021</td>
+                        <td>28.00</td>
+            <td>13.20</td>
+            <td>
+              0.47            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bellary</td -->
+              <td>2021 - 2022</td>
+                            <td>25.00</td>
+              <td>14.00</td>
+              <td>
+                0.56              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bellary</td -->
+              <td>2022 - 2023</td>
+                            <td>1.00</td>
+              <td>0.40</td>
+              <td>
+                0.40              </td>
+            
+
+            </tr>
+                          <tr>
+                        <td rowspan="13">5. Bengaluru urban</td>
+                      <td>2009 - 2010</td>
+                        <td>17.00</td>
+            <td>63.00</td>
+            <td>
+              3.71            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bengaluru urban</td -->
+              <td>2010 - 2011</td>
+                            <td>16.00</td>
+              <td>9.70</td>
+              <td>
+                0.61              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bengaluru urban</td -->
+              <td>2011 - 2012</td>
+                            <td>15.00</td>
+              <td>4.20</td>
+              <td>
+                0.28              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bengaluru urban</td -->
+              <td>2012 - 2013</td>
+                            <td>2.00</td>
+              <td>6.00</td>
+              <td>
+                3.00              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bengaluru urban</td -->
+              <td>2013 - 2014</td>
+                            <td>2.00</td>
+              <td>5.00</td>
+              <td>
+                2.50              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bengaluru urban</td -->
+              <td>2014 - 2015</td>
+                            <td>2.00</td>
+              <td>1.20</td>
+              <td>
+                0.60              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bengaluru urban</td -->
+              <td>2015 - 2016</td>
+                            <td>11.00</td>
+              <td>8.40</td>
+              <td>
+                0.76              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bengaluru urban</td -->
+              <td>2016 - 2017</td>
+                            <td>2.00</td>
+              <td>1.20</td>
+              <td>
+                0.60              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bengaluru urban</td -->
+              <td>2017 - 2018</td>
+                            <td>1.00</td>
+              <td>0.70</td>
+              <td>
+                0.70              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bengaluru urban</td -->
+              <td>2019 - 2020</td>
+                            <td>8.00</td>
+              <td>3.10</td>
+              <td>
+                0.39              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bengaluru urban</td -->
+              <td>2020 - 2021</td>
+                            <td>2.00</td>
+              <td>0.90</td>
+              <td>
+                0.45              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bengaluru urban</td -->
+              <td>2021 - 2022</td>
+                            <td>8.00</td>
+              <td>4.30</td>
+              <td>
+                0.54              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bengaluru urban</td -->
+              <td>2022 - 2023</td>
+                            <td>5.00</td>
+              <td>34.35</td>
+              <td>
+                6.87              </td>
+            
+
+            </tr>
+                          <tr>
+                        <td rowspan="4">6. Bidar</td>
+                      <td>2008 - 2009</td>
+                        <td>1.00</td>
+            <td>4.00</td>
+            <td>
+              4.00            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bidar</td -->
+              <td>2015 - 2016</td>
+                            <td>2.00</td>
+              <td>1.50</td>
+              <td>
+                0.75              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bidar</td -->
+              <td>2020 - 2021</td>
+                            <td>7.00</td>
+              <td>3.30</td>
+              <td>
+                0.47              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Bidar</td -->
+              <td>2021 - 2022</td>
+                            <td>3.00</td>
+              <td>1.60</td>
+              <td>
+                0.53              </td>
+            
+
+            </tr>
+                          <tr>
+                        <td rowspan="1">7. Bijapur</td>
+                      <td>2022 - 2023</td>
+                        <td>94.00</td>
+            <td>36.60</td>
+            <td>
+              0.39            </td>
+          
+
+          </tr>
+                          <tr>
+                        <td rowspan="16">8. Chamarajanagar</td>
+                      <td>2007 - 2008</td>
+                        <td>2.00</td>
+            <td>6.00</td>
+            <td>
+              3.00            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chamarajanagar</td -->
+              <td>2008 - 2009</td>
+                            <td>8.00</td>
+              <td>34.00</td>
+              <td>
+                4.25              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chamarajanagar</td -->
+              <td>2009 - 2010</td>
+                            <td>24.00</td>
+              <td>89.00</td>
+              <td>
+                3.71              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chamarajanagar</td -->
+              <td>2010 - 2011</td>
+                            <td>23.00</td>
+              <td>13.90</td>
+              <td>
+                0.60              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chamarajanagar</td -->
+              <td>2011 - 2012</td>
+                            <td>28.00</td>
+              <td>7.90</td>
+              <td>
+                0.28              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chamarajanagar</td -->
+              <td>2012 - 2013</td>
+                            <td>28.00</td>
+              <td>79.00</td>
+              <td>
+                2.82              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chamarajanagar</td -->
+              <td>2013 - 2014</td>
+                            <td>50.00</td>
+              <td>124.00</td>
+              <td>
+                2.48              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chamarajanagar</td -->
+              <td>2014 - 2015</td>
+                            <td>37.00</td>
+              <td>21.70</td>
+              <td>
+                0.59              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chamarajanagar</td -->
+              <td>2015 - 2016</td>
+                            <td>141.00</td>
+              <td>107.90</td>
+              <td>
+                0.77              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chamarajanagar</td -->
+              <td>2016 - 2017</td>
+                            <td>141.00</td>
+              <td>85.40</td>
+              <td>
+                0.61              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chamarajanagar</td -->
+              <td>2017 - 2018</td>
+                            <td>142.00</td>
+              <td>93.20</td>
+              <td>
+                0.66              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chamarajanagar</td -->
+              <td>2018 - 2019</td>
+                            <td>37.00</td>
+              <td>23.50</td>
+              <td>
+                0.64              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chamarajanagar</td -->
+              <td>2019 - 2020</td>
+                            <td>34.00</td>
+              <td>13.30</td>
+              <td>
+                0.39              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chamarajanagar</td -->
+              <td>2020 - 2021</td>
+                            <td>28.00</td>
+              <td>13.20</td>
+              <td>
+                0.47              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chamarajanagar</td -->
+              <td>2021 - 2022</td>
+                            <td>29.00</td>
+              <td>16.10</td>
+              <td>
+                0.56              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chamarajanagar</td -->
+              <td>2022 - 2023</td>
+                            <td>31.00</td>
+              <td>6.90</td>
+              <td>
+                0.22              </td>
+            
+
+            </tr>
+                          <tr>
+                        <td rowspan="3">9. Chikballapur</td>
+                      <td>2020 - 2021</td>
+                        <td>12.00</td>
+            <td>5.70</td>
+            <td>
+              0.48            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chikballapur</td -->
+              <td>2021 - 2022</td>
+                            <td>12.00</td>
+              <td>6.40</td>
+              <td>
+                0.53              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chikballapur</td -->
+              <td>2022 - 2023</td>
+                            <td>5.00</td>
+              <td>1.57</td>
+              <td>
+                0.31              </td>
+            
+
+            </tr>
+                          <tr>
+                        <td rowspan="22">10. Chikmagalur</td>
+                      <td>2001 - 2002</td>
+                        <td>1,570.00</td>
+            <td>1,725.00</td>
+            <td>
+              1.10            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chikmagalur</td -->
+              <td>2002 - 2003</td>
+                            <td>1,664.00</td>
+              <td>1,829.00</td>
+              <td>
+                1.10              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chikmagalur</td -->
+              <td>2003 - 2004</td>
+                            <td>1,761.00</td>
+              <td>1,935.00</td>
+              <td>
+                1.10              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chikmagalur</td -->
+              <td>2004 - 2005</td>
+                            <td>1,939.00</td>
+              <td>2,131.00</td>
+              <td>
+                1.10              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chikmagalur</td -->
+              <td>2005 - 2006</td>
+                            <td>2,088.00</td>
+              <td>2,295.00</td>
+              <td>
+                1.10              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chikmagalur</td -->
+              <td>2006 - 2007</td>
+                            <td>2,210.00</td>
+              <td>2,429.00</td>
+              <td>
+                1.10              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chikmagalur</td -->
+              <td>2007 - 2008</td>
+                            <td>2,256.00</td>
+              <td>7,035.00</td>
+              <td>
+                3.12              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chikmagalur</td -->
+              <td>2008 - 2009</td>
+                            <td>2,274.00</td>
+              <td>9,635.00</td>
+              <td>
+                4.24              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chikmagalur</td -->
+              <td>2009 - 2010</td>
+                            <td>3,524.00</td>
+              <td>12,978.00</td>
+              <td>
+                3.68              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chikmagalur</td -->
+              <td>2010 - 2011</td>
+                            <td>3,552.00</td>
+              <td>3,488.30</td>
+              <td>
+                0.98              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chikmagalur</td -->
+              <td>2011 - 2012</td>
+                            <td>3,585.00</td>
+              <td>1,015.10</td>
+              <td>
+                0.28              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chikmagalur</td -->
+              <td>2012 - 2013</td>
+                            <td>7,649.00</td>
+              <td>21,657.00</td>
+              <td>
+                2.83              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chikmagalur</td -->
+              <td>2013 - 2014</td>
+                            <td>7,746.00</td>
+              <td>19,248.00</td>
+              <td>
+                2.48              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chikmagalur</td -->
+              <td>2014 - 2015</td>
+                            <td>7,788.00</td>
+              <td>7,779.50</td>
+              <td>
+                1.00              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chikmagalur</td -->
+              <td>2015 - 2016</td>
+                            <td>8,003.00</td>
+              <td>8,382.50</td>
+              <td>
+                1.05              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chikmagalur</td -->
+              <td>2016 - 2017</td>
+                            <td>8,194.00</td>
+              <td>7,122.40</td>
+              <td>
+                0.87              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chikmagalur</td -->
+              <td>2017 - 2018</td>
+                            <td>8,199.00</td>
+              <td>7,597.50</td>
+              <td>
+                0.93              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chikmagalur</td -->
+              <td>2018 - 2019</td>
+                            <td>34,097.00</td>
+              <td>25,789.60</td>
+              <td>
+                0.76              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chikmagalur</td -->
+              <td>2019 - 2020</td>
+                            <td>40,520.00</td>
+              <td>12,034.40</td>
+              <td>
+                0.30              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chikmagalur</td -->
+              <td>2020 - 2021</td>
+                            <td>49,260.00</td>
+              <td>26,501.90</td>
+              <td>
+                0.54              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chikmagalur</td -->
+              <td>2021 - 2022</td>
+                            <td>48,396.00</td>
+              <td>26,618.00</td>
+              <td>
+                0.55              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chikmagalur</td -->
+              <td>2022 - 2023</td>
+                            <td>49,815.00</td>
+              <td>19,428.01</td>
+              <td>
+                0.39              </td>
+            
+
+            </tr>
+                          <tr>
+                        <td rowspan="10">11. Chitradurga</td>
+                      <td>2013 - 2014</td>
+                        <td>8.00</td>
+            <td>20.00</td>
+            <td>
+              2.50            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chitradurga</td -->
+              <td>2014 - 2015</td>
+                            <td>48.00</td>
+              <td>28.20</td>
+              <td>
+                0.59              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chitradurga</td -->
+              <td>2015 - 2016</td>
+                            <td>75.00</td>
+              <td>57.40</td>
+              <td>
+                0.77              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chitradurga</td -->
+              <td>2016 - 2017</td>
+                            <td>1.00</td>
+              <td>0.60</td>
+              <td>
+                0.60              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chitradurga</td -->
+              <td>2017 - 2018</td>
+                            <td>24.00</td>
+              <td>15.80</td>
+              <td>
+                0.66              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chitradurga</td -->
+              <td>2018 - 2019</td>
+                            <td>24.00</td>
+              <td>15.20</td>
+              <td>
+                0.63              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chitradurga</td -->
+              <td>2019 - 2020</td>
+                            <td>24.00</td>
+              <td>9.40</td>
+              <td>
+                0.39              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chitradurga</td -->
+              <td>2020 - 2021</td>
+                            <td>56.00</td>
+              <td>26.40</td>
+              <td>
+                0.47              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chitradurga</td -->
+              <td>2021 - 2022</td>
+                            <td>40.00</td>
+              <td>22.00</td>
+              <td>
+                0.55              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Chitradurga</td -->
+              <td>2022 - 2023</td>
+                            <td>31.00</td>
+              <td>27.91</td>
+              <td>
+                0.90              </td>
+            
+
+            </tr>
+                          <tr>
+                        <td rowspan="22">12. Dakshin kannad</td>
+                      <td>2001 - 2002</td>
+                        <td>1,930.00</td>
+            <td>4,471.00</td>
+            <td>
+              2.32            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dakshin kannad</td -->
+              <td>2002 - 2003</td>
+                            <td>1,945.00</td>
+              <td>4,506.00</td>
+              <td>
+                2.32              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dakshin kannad</td -->
+              <td>2003 - 2004</td>
+                            <td>1,973.00</td>
+              <td>4,571.00</td>
+              <td>
+                2.32              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dakshin kannad</td -->
+              <td>2004 - 2005</td>
+                            <td>1,986.00</td>
+              <td>4,601.00</td>
+              <td>
+                2.32              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dakshin kannad</td -->
+              <td>2005 - 2006</td>
+                            <td>1,976.00</td>
+              <td>4,578.00</td>
+              <td>
+                2.32              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dakshin kannad</td -->
+              <td>2006 - 2007</td>
+                            <td>2,008.00</td>
+              <td>4,652.00</td>
+              <td>
+                2.32              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dakshin kannad</td -->
+              <td>2007 - 2008</td>
+                            <td>2,014.00</td>
+              <td>4,048.00</td>
+              <td>
+                2.01              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dakshin kannad</td -->
+              <td>2008 - 2009</td>
+                            <td>2,059.00</td>
+              <td>8,724.00</td>
+              <td>
+                4.24              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dakshin kannad</td -->
+              <td>2009 - 2010</td>
+                            <td>2,092.00</td>
+              <td>7,435.00</td>
+              <td>
+                3.55              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dakshin kannad</td -->
+              <td>2010 - 2011</td>
+                            <td>2,112.00</td>
+              <td>1,087.30</td>
+              <td>
+                0.51              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dakshin kannad</td -->
+              <td>2011 - 2012</td>
+                            <td>2,146.00</td>
+              <td>1,111.10</td>
+              <td>
+                0.52              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dakshin kannad</td -->
+              <td>2012 - 2013</td>
+                            <td>2,183.00</td>
+              <td>11,303.00</td>
+              <td>
+                5.18              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dakshin kannad</td -->
+              <td>2013 - 2014</td>
+                            <td>2,241.00</td>
+              <td>10,893.00</td>
+              <td>
+                4.86              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dakshin kannad</td -->
+              <td>2014 - 2015</td>
+                            <td>2,546.00</td>
+              <td>1,320.80</td>
+              <td>
+                0.52              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dakshin kannad</td -->
+              <td>2015 - 2016</td>
+                            <td>2,736.00</td>
+              <td>1,029.30</td>
+              <td>
+                0.38              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dakshin kannad</td -->
+              <td>2016 - 2017</td>
+                            <td>3,122.00</td>
+              <td>831.40</td>
+              <td>
+                0.27              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dakshin kannad</td -->
+              <td>2017 - 2018</td>
+                            <td>3,558.00</td>
+              <td>2,043.00</td>
+              <td>
+                0.57              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dakshin kannad</td -->
+              <td>2018 - 2019</td>
+                            <td>5,322.00</td>
+              <td>1,053.80</td>
+              <td>
+                0.20              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dakshin kannad</td -->
+              <td>2019 - 2020</td>
+                            <td>7,146.00</td>
+              <td>3,020.80</td>
+              <td>
+                0.42              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dakshin kannad</td -->
+              <td>2020 - 2021</td>
+                            <td>13,428.00</td>
+              <td>5,693.50</td>
+              <td>
+                0.42              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dakshin kannad</td -->
+              <td>2021 - 2022</td>
+                            <td>15,037.00</td>
+              <td>8,270.40</td>
+              <td>
+                0.55              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dakshin kannad</td -->
+              <td>2022 - 2023</td>
+                            <td>18,388.00</td>
+              <td>3,677.55</td>
+              <td>
+                0.20              </td>
+            
+
+            </tr>
+                          <tr>
+                        <td rowspan="22">13. Davangere</td>
+                      <td>2001 - 2002</td>
+                        <td>19.00</td>
+            <td>45.00</td>
+            <td>
+              2.37            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Davangere</td -->
+              <td>2002 - 2003</td>
+                            <td>1.00</td>
+              <td>2.00</td>
+              <td>
+                2.00              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Davangere</td -->
+              <td>2003 - 2004</td>
+                            <td>1.00</td>
+              <td>2.00</td>
+              <td>
+                2.00              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Davangere</td -->
+              <td>2004 - 2005</td>
+                            <td>36.00</td>
+              <td>85.00</td>
+              <td>
+                2.36              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Davangere</td -->
+              <td>2005 - 2006</td>
+                            <td>12.00</td>
+              <td>28.00</td>
+              <td>
+                2.33              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Davangere</td -->
+              <td>2006 - 2007</td>
+                            <td>13.00</td>
+              <td>31.00</td>
+              <td>
+                2.38              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Davangere</td -->
+              <td>2007 - 2008</td>
+                            <td>10.00</td>
+              <td>31.00</td>
+              <td>
+                3.10              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Davangere</td -->
+              <td>2008 - 2009</td>
+                            <td>11.00</td>
+              <td>47.00</td>
+              <td>
+                4.27              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Davangere</td -->
+              <td>2009 - 2010</td>
+                            <td>14.00</td>
+              <td>52.00</td>
+              <td>
+                3.71              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Davangere</td -->
+              <td>2010 - 2011</td>
+                            <td>9.00</td>
+              <td>5.40</td>
+              <td>
+                0.60              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Davangere</td -->
+              <td>2011 - 2012</td>
+                            <td>18.00</td>
+              <td>5.10</td>
+              <td>
+                0.28              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Davangere</td -->
+              <td>2012 - 2013</td>
+                            <td>2.00</td>
+              <td>6.00</td>
+              <td>
+                3.00              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Davangere</td -->
+              <td>2013 - 2014</td>
+                            <td>45.00</td>
+              <td>112.00</td>
+              <td>
+                2.49              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Davangere</td -->
+              <td>2014 - 2015</td>
+                            <td>25.00</td>
+              <td>14.70</td>
+              <td>
+                0.59              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Davangere</td -->
+              <td>2015 - 2016</td>
+                            <td>487.00</td>
+              <td>372.70</td>
+              <td>
+                0.77              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Davangere</td -->
+              <td>2016 - 2017</td>
+                            <td>115.00</td>
+              <td>69.70</td>
+              <td>
+                0.61              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Davangere</td -->
+              <td>2017 - 2018</td>
+                            <td>205.00</td>
+              <td>134.60</td>
+              <td>
+                0.66              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Davangere</td -->
+              <td>2018 - 2019</td>
+                            <td>420.00</td>
+              <td>266.50</td>
+              <td>
+                0.63              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Davangere</td -->
+              <td>2019 - 2020</td>
+                            <td>429.00</td>
+              <td>168.20</td>
+              <td>
+                0.39              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Davangere</td -->
+              <td>2020 - 2021</td>
+                            <td>341.00</td>
+              <td>160.60</td>
+              <td>
+                0.47              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Davangere</td -->
+              <td>2021 - 2022</td>
+                            <td>273.00</td>
+              <td>149.80</td>
+              <td>
+                0.55              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Davangere</td -->
+              <td>2022 - 2023</td>
+                            <td>282.00</td>
+              <td>115.72</td>
+              <td>
+                0.41              </td>
+            
+
+            </tr>
+                          <tr>
+                        <td rowspan="8">14. Dharwad</td>
+                      <td>2004 - 2005</td>
+                        <td>3.00</td>
+            <td>7.00</td>
+            <td>
+              2.33            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dharwad</td -->
+              <td>2005 - 2006</td>
+                            <td>1.00</td>
+              <td>2.00</td>
+              <td>
+                2.00              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dharwad</td -->
+              <td>2008 - 2009</td>
+                            <td>9.00</td>
+              <td>38.00</td>
+              <td>
+                4.22              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dharwad</td -->
+              <td>2017 - 2018</td>
+                            <td>1.00</td>
+              <td>0.70</td>
+              <td>
+                0.70              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dharwad</td -->
+              <td>2019 - 2020</td>
+                            <td>8.00</td>
+              <td>3.10</td>
+              <td>
+                0.39              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dharwad</td -->
+              <td>2020 - 2021</td>
+                            <td>33.00</td>
+              <td>15.50</td>
+              <td>
+                0.47              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dharwad</td -->
+              <td>2021 - 2022</td>
+                            <td>12.00</td>
+              <td>6.40</td>
+              <td>
+                0.53              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dharwad</td -->
+              <td>2022 - 2023</td>
+                            <td>9.00</td>
+              <td>2.56</td>
+              <td>
+                0.28              </td>
+            
+
+            </tr>
+                          <tr>
+                        <td rowspan="4">15. Gadag</td>
+                      <td>2015 - 2016</td>
+                        <td>20.00</td>
+            <td>15.30</td>
+            <td>
+              0.77            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Gadag</td -->
+              <td>2016 - 2017</td>
+                            <td>8.00</td>
+              <td>4.80</td>
+              <td>
+                0.60              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Gadag</td -->
+              <td>2019 - 2020</td>
+                            <td>23.00</td>
+              <td>9.00</td>
+              <td>
+                0.39              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Gadag</td -->
+              <td>2020 - 2021</td>
+                            <td>2.00</td>
+              <td>0.90</td>
+              <td>
+                0.45              </td>
+            
+
+            </tr>
+                          <tr>
+                        <td rowspan="5">16. Gulbarga</td>
+                      <td>2001 - 2002</td>
+                        <td>1.00</td>
+            <td>2.00</td>
+            <td>
+              2.00            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Gulbarga</td -->
+              <td>2002 - 2003</td>
+                            <td>1.00</td>
+              <td>2.00</td>
+              <td>
+                2.00              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Gulbarga</td -->
+              <td>2020 - 2021</td>
+                            <td>51.00</td>
+              <td>24.00</td>
+              <td>
+                0.47              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Gulbarga</td -->
+              <td>2021 - 2022</td>
+                            <td>25.00</td>
+              <td>14.00</td>
+              <td>
+                0.56              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Gulbarga</td -->
+              <td>2022 - 2023</td>
+                            <td>42.00</td>
+              <td>16.40</td>
+              <td>
+                0.39              </td>
+            
+
+            </tr>
+                          <tr>
+                        <td rowspan="22">17. Hassan</td>
+                      <td>2001 - 2002</td>
+                        <td>802.00</td>
+            <td>881.00</td>
+            <td>
+              1.10            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Hassan</td -->
+              <td>2002 - 2003</td>
+                            <td>1,293.00</td>
+              <td>1,421.00</td>
+              <td>
+                1.10              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Hassan</td -->
+              <td>2003 - 2004</td>
+                            <td>1,432.00</td>
+              <td>1,574.00</td>
+              <td>
+                1.10              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Hassan</td -->
+              <td>2004 - 2005</td>
+                            <td>1,648.00</td>
+              <td>1,811.00</td>
+              <td>
+                1.10              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Hassan</td -->
+              <td>2005 - 2006</td>
+                            <td>2,689.00</td>
+              <td>2,955.00</td>
+              <td>
+                1.10              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Hassan</td -->
+              <td>2006 - 2007</td>
+                            <td>2,752.00</td>
+              <td>3,024.00</td>
+              <td>
+                1.10              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Hassan</td -->
+              <td>2007 - 2008</td>
+                            <td>2,784.00</td>
+              <td>10,280.00</td>
+              <td>
+                3.69              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Hassan</td -->
+              <td>2008 - 2009</td>
+                            <td>2,794.00</td>
+              <td>10,732.00</td>
+              <td>
+                3.84              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Hassan</td -->
+              <td>2009 - 2010</td>
+                            <td>3,049.00</td>
+              <td>11,712.00</td>
+              <td>
+                3.84              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Hassan</td -->
+              <td>2010 - 2011</td>
+                            <td>3,460.00</td>
+              <td>1,233.10</td>
+              <td>
+                0.36              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Hassan</td -->
+              <td>2011 - 2012</td>
+                            <td>3,574.00</td>
+              <td>1,040.20</td>
+              <td>
+                0.29              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Hassan</td -->
+              <td>2012 - 2013</td>
+                            <td>4,165.00</td>
+              <td>12,123.00</td>
+              <td>
+                2.91              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Hassan</td -->
+              <td>2013 - 2014</td>
+                            <td>4,730.00</td>
+              <td>7,445.00</td>
+              <td>
+                1.57              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Hassan</td -->
+              <td>2014 - 2015</td>
+                            <td>4,790.00</td>
+              <td>2,110.20</td>
+              <td>
+                0.44              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Hassan</td -->
+              <td>2015 - 2016</td>
+                            <td>5,301.00</td>
+              <td>7,069.00</td>
+              <td>
+                1.33              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Hassan</td -->
+              <td>2016 - 2017</td>
+                            <td>7,800.00</td>
+              <td>6,270.30</td>
+              <td>
+                0.80              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Hassan</td -->
+              <td>2017 - 2018</td>
+                            <td>9,614.00</td>
+              <td>7,585.70</td>
+              <td>
+                0.79              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Hassan</td -->
+              <td>2018 - 2019</td>
+                            <td>33,788.00</td>
+              <td>35,390.20</td>
+              <td>
+                1.05              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Hassan</td -->
+              <td>2019 - 2020</td>
+                            <td>30,665.00</td>
+              <td>14,875.60</td>
+              <td>
+                0.49              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Hassan</td -->
+              <td>2020 - 2021</td>
+                            <td>34,926.00</td>
+              <td>28,604.40</td>
+              <td>
+                0.82              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Hassan</td -->
+              <td>2021 - 2022</td>
+                            <td>31,643.00</td>
+              <td>26,263.90</td>
+              <td>
+                0.83              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Hassan</td -->
+              <td>2022 - 2023</td>
+                            <td>25,508.00</td>
+              <td>9,693.20</td>
+              <td>
+                0.38              </td>
+            
+
+            </tr>
+                          <tr>
+                        <td rowspan="9">18. Haveri</td>
+                      <td>2014 - 2015</td>
+                        <td>21.00</td>
+            <td>12.30</td>
+            <td>
+              0.59            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Haveri</td -->
+              <td>2015 - 2016</td>
+                            <td>10.00</td>
+              <td>7.70</td>
+              <td>
+                0.77              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Haveri</td -->
+              <td>2016 - 2017</td>
+                            <td>7.00</td>
+              <td>4.20</td>
+              <td>
+                0.60              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Haveri</td -->
+              <td>2017 - 2018</td>
+                            <td>15.00</td>
+              <td>9.80</td>
+              <td>
+                0.65              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Haveri</td -->
+              <td>2018 - 2019</td>
+                            <td>36.00</td>
+              <td>22.80</td>
+              <td>
+                0.63              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Haveri</td -->
+              <td>2019 - 2020</td>
+                            <td>66.00</td>
+              <td>25.90</td>
+              <td>
+                0.39              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Haveri</td -->
+              <td>2020 - 2021</td>
+                            <td>66.00</td>
+              <td>31.10</td>
+              <td>
+                0.47              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Haveri</td -->
+              <td>2021 - 2022</td>
+                            <td>39.00</td>
+              <td>21.50</td>
+              <td>
+                0.55              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Haveri</td -->
+              <td>2022 - 2023</td>
+                            <td>32.00</td>
+              <td>11.01</td>
+              <td>
+                0.34              </td>
+            
+
+            </tr>
+                          <tr>
+                        <td rowspan="22">19. Kodagu</td>
+                      <td>2001 - 2002</td>
+                        <td>4,112.00</td>
+            <td>11,683.00</td>
+            <td>
+              2.84            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Kodagu</td -->
+              <td>2002 - 2003</td>
+                            <td>4,167.00</td>
+              <td>11,840.00</td>
+              <td>
+                2.84              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Kodagu</td -->
+              <td>2003 - 2004</td>
+                            <td>4,210.00</td>
+              <td>11,962.00</td>
+              <td>
+                2.84              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Kodagu</td -->
+              <td>2004 - 2005</td>
+                            <td>5,403.00</td>
+              <td>15,352.00</td>
+              <td>
+                2.84              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Kodagu</td -->
+              <td>2005 - 2006</td>
+                            <td>6,733.00</td>
+              <td>19,130.00</td>
+              <td>
+                2.84              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Kodagu</td -->
+              <td>2006 - 2007</td>
+                            <td>5,464.00</td>
+              <td>15,525.00</td>
+              <td>
+                2.84              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Kodagu</td -->
+              <td>2007 - 2008</td>
+                            <td>7,945.00</td>
+              <td>24,855.00</td>
+              <td>
+                3.13              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Kodagu</td -->
+              <td>2008 - 2009</td>
+                            <td>8,880.00</td>
+              <td>39,385.00</td>
+              <td>
+                4.44              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Kodagu</td -->
+              <td>2009 - 2010</td>
+                            <td>9,409.00</td>
+              <td>35,210.00</td>
+              <td>
+                3.74              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Kodagu</td -->
+              <td>2010 - 2011</td>
+                            <td>10,321.00</td>
+              <td>6,038.70</td>
+              <td>
+                0.59              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Kodagu</td -->
+              <td>2011 - 2012</td>
+                            <td>10,643.00</td>
+              <td>2,497.20</td>
+              <td>
+                0.23              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Kodagu</td -->
+              <td>2012 - 2013</td>
+                            <td>10,797.00</td>
+              <td>25,333.00</td>
+              <td>
+                2.35              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Kodagu</td -->
+              <td>2013 - 2014</td>
+                            <td>11,002.00</td>
+              <td>25,814.00</td>
+              <td>
+                2.35              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Kodagu</td -->
+              <td>2014 - 2015</td>
+                            <td>14,934.00</td>
+              <td>6,653.10</td>
+              <td>
+                0.45              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Kodagu</td -->
+              <td>2015 - 2016</td>
+                            <td>15,096.00</td>
+              <td>6,635.60</td>
+              <td>
+                0.44              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Kodagu</td -->
+              <td>2016 - 2017</td>
+                            <td>15,219.00</td>
+              <td>6,222.60</td>
+              <td>
+                0.41              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Kodagu</td -->
+              <td>2017 - 2018</td>
+                            <td>15,875.00</td>
+              <td>6,915.20</td>
+              <td>
+                0.44              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Kodagu</td -->
+              <td>2018 - 2019</td>
+                            <td>65,605.00</td>
+              <td>27,148.70</td>
+              <td>
+                0.41              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Kodagu</td -->
+              <td>2019 - 2020</td>
+                            <td>70,757.00</td>
+              <td>28,440.10</td>
+              <td>
+                0.40              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Kodagu</td -->
+              <td>2020 - 2021</td>
+                            <td>97,979.00</td>
+              <td>30,373.50</td>
+              <td>
+                0.31              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Kodagu</td -->
+              <td>2021 - 2022</td>
+                            <td>98,445.00</td>
+              <td>44,694.00</td>
+              <td>
+                0.45              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Kodagu</td -->
+              <td>2022 - 2023</td>
+                            <td>103,300.00</td>
+              <td>42,352.93</td>
+              <td>
+                0.41              </td>
+            
+
+            </tr>
+                          <tr>
+                        <td rowspan="2">20. Kolar</td>
+                      <td>2020 - 2021</td>
+                        <td>3.00</td>
+            <td>1.40</td>
+            <td>
+              0.47            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Kolar</td -->
+              <td>2022 - 2023</td>
+                            <td>1.00</td>
+              <td>0.38</td>
+              <td>
+                0.38              </td>
+            
+
+            </tr>
+                          <tr>
+                        <td rowspan="3">21. Koppal</td>
+                      <td>2020 - 2021</td>
+                        <td>44.00</td>
+            <td>20.70</td>
+            <td>
+              0.47            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Koppal</td -->
+              <td>2021 - 2022</td>
+                            <td>35.00</td>
+              <td>19.30</td>
+              <td>
+                0.55              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Koppal</td -->
+              <td>2022 - 2023</td>
+                            <td>25.00</td>
+              <td>196.01</td>
+              <td>
+                7.84              </td>
+            
+
+            </tr>
+                          <tr>
+                        <td rowspan="10">22. Mandya</td>
+                      <td>2001 - 2002</td>
+                        <td>4.00</td>
+            <td>10.00</td>
+            <td>
+              2.50            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Mandya</td -->
+              <td>2002 - 2003</td>
+                            <td>2.00</td>
+              <td>5.00</td>
+              <td>
+                2.50              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Mandya</td -->
+              <td>2003 - 2004</td>
+                            <td>2.00</td>
+              <td>5.00</td>
+              <td>
+                2.50              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Mandya</td -->
+              <td>2004 - 2005</td>
+                            <td>2.00</td>
+              <td>5.00</td>
+              <td>
+                2.50              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Mandya</td -->
+              <td>2005 - 2006</td>
+                            <td>2.00</td>
+              <td>5.00</td>
+              <td>
+                2.50              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Mandya</td -->
+              <td>2015 - 2016</td>
+                            <td>27.00</td>
+              <td>20.70</td>
+              <td>
+                0.77              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Mandya</td -->
+              <td>2019 - 2020</td>
+                            <td>11.00</td>
+              <td>4.30</td>
+              <td>
+                0.39              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Mandya</td -->
+              <td>2020 - 2021</td>
+                            <td>19.00</td>
+              <td>8.90</td>
+              <td>
+                0.47              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Mandya</td -->
+              <td>2021 - 2022</td>
+                            <td>4.00</td>
+              <td>2.10</td>
+              <td>
+                0.53              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Mandya</td -->
+              <td>2022 - 2023</td>
+                            <td>5.00</td>
+              <td>0.90</td>
+              <td>
+                0.18              </td>
+            
+
+            </tr>
+                          <tr>
+                        <td rowspan="22">23. Mysore</td>
+                      <td>2001 - 2002</td>
+                        <td>20.00</td>
+            <td>51.00</td>
+            <td>
+              2.55            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Mysore</td -->
+              <td>2002 - 2003</td>
+                            <td>124.00</td>
+              <td>317.00</td>
+              <td>
+                2.56              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Mysore</td -->
+              <td>2003 - 2004</td>
+                            <td>25.00</td>
+              <td>64.00</td>
+              <td>
+                2.56              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Mysore</td -->
+              <td>2004 - 2005</td>
+                            <td>28.00</td>
+              <td>72.00</td>
+              <td>
+                2.57              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Mysore</td -->
+              <td>2005 - 2006</td>
+                            <td>25.00</td>
+              <td>64.00</td>
+              <td>
+                2.56              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Mysore</td -->
+              <td>2006 - 2007</td>
+                            <td>26.00</td>
+              <td>66.00</td>
+              <td>
+                2.54              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Mysore</td -->
+              <td>2007 - 2008</td>
+                            <td>59.00</td>
+              <td>184.00</td>
+              <td>
+                3.12              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Mysore</td -->
+              <td>2008 - 2009</td>
+                            <td>62.00</td>
+              <td>263.00</td>
+              <td>
+                4.24              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Mysore</td -->
+              <td>2009 - 2010</td>
+                            <td>166.00</td>
+              <td>616.00</td>
+              <td>
+                3.71              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Mysore</td -->
+              <td>2010 - 2011</td>
+                            <td>63.00</td>
+              <td>38.00</td>
+              <td>
+                0.60              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Mysore</td -->
+              <td>2011 - 2012</td>
+                            <td>73.00</td>
+              <td>20.70</td>
+              <td>
+                0.28              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Mysore</td -->
+              <td>2012 - 2013</td>
+                            <td>46.00</td>
+              <td>130.00</td>
+              <td>
+                2.83              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Mysore</td -->
+              <td>2013 - 2014</td>
+                            <td>21.00</td>
+              <td>52.00</td>
+              <td>
+                2.48              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Mysore</td -->
+              <td>2014 - 2015</td>
+                            <td>52.00</td>
+              <td>30.50</td>
+              <td>
+                0.59              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Mysore</td -->
+              <td>2015 - 2016</td>
+                            <td>42.00</td>
+              <td>32.10</td>
+              <td>
+                0.76              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Mysore</td -->
+              <td>2016 - 2017</td>
+                            <td>73.00</td>
+              <td>44.20</td>
+              <td>
+                0.61              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Mysore</td -->
+              <td>2017 - 2018</td>
+                            <td>39.00</td>
+              <td>25.60</td>
+              <td>
+                0.66              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Mysore</td -->
+              <td>2018 - 2019</td>
+                            <td>39.00</td>
+              <td>24.70</td>
+              <td>
+                0.63              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Mysore</td -->
+              <td>2019 - 2020</td>
+                            <td>98.00</td>
+              <td>38.40</td>
+              <td>
+                0.39              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Mysore</td -->
+              <td>2020 - 2021</td>
+                            <td>249.00</td>
+              <td>117.30</td>
+              <td>
+                0.47              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Mysore</td -->
+              <td>2021 - 2022</td>
+                            <td>73.00</td>
+              <td>39.70</td>
+              <td>
+                0.54              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Mysore</td -->
+              <td>2022 - 2023</td>
+                            <td>129.00</td>
+              <td>38.80</td>
+              <td>
+                0.30              </td>
+            
+
+            </tr>
+                          <tr>
+                        <td rowspan="3">24. Raichur</td>
+                      <td>2020 - 2021</td>
+                        <td>125.00</td>
+            <td>58.90</td>
+            <td>
+              0.47            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Raichur</td -->
+              <td>2021 - 2022</td>
+                            <td>80.00</td>
+              <td>44.00</td>
+              <td>
+                0.55              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Raichur</td -->
+              <td>2022 - 2023</td>
+                            <td>27.00</td>
+              <td>8.50</td>
+              <td>
+                0.31              </td>
+            
+
+            </tr>
+                          <tr>
+                        <td rowspan="10">25. Ramanagara</td>
+                      <td>2011 - 2012</td>
+                        <td>2.00</td>
+            <td>0.60</td>
+            <td>
+              0.30            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Ramanagara</td -->
+              <td>2012 - 2013</td>
+                            <td>19.00</td>
+              <td>54.00</td>
+              <td>
+                2.84              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Ramanagara</td -->
+              <td>2013 - 2014</td>
+                            <td>10.00</td>
+              <td>25.00</td>
+              <td>
+                2.50              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Ramanagara</td -->
+              <td>2014 - 2015</td>
+                            <td>11.00</td>
+              <td>6.50</td>
+              <td>
+                0.59              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Ramanagara</td -->
+              <td>2015 - 2016</td>
+                            <td>10.00</td>
+              <td>7.70</td>
+              <td>
+                0.77              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Ramanagara</td -->
+              <td>2016 - 2017</td>
+                            <td>6.00</td>
+              <td>3.60</td>
+              <td>
+                0.60              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Ramanagara</td -->
+              <td>2017 - 2018</td>
+                            <td>6.00</td>
+              <td>3.90</td>
+              <td>
+                0.65              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Ramanagara</td -->
+              <td>2020 - 2021</td>
+                            <td>11.00</td>
+              <td>5.20</td>
+              <td>
+                0.47              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Ramanagara</td -->
+              <td>2021 - 2022</td>
+                            <td>7.00</td>
+              <td>3.80</td>
+              <td>
+                0.54              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Ramanagara</td -->
+              <td>2022 - 2023</td>
+                            <td>7.00</td>
+              <td>1.85</td>
+              <td>
+                0.26              </td>
+            
+
+            </tr>
+                          <tr>
+                        <td rowspan="22">26. Shimoga</td>
+                      <td>2001 - 2002</td>
+                        <td>818.00</td>
+            <td>2,316.00</td>
+            <td>
+              2.83            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Shimoga</td -->
+              <td>2002 - 2003</td>
+                            <td>814.00</td>
+              <td>2,305.00</td>
+              <td>
+                2.83              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Shimoga</td -->
+              <td>2003 - 2004</td>
+                            <td>853.00</td>
+              <td>2,415.00</td>
+              <td>
+                2.83              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Shimoga</td -->
+              <td>2004 - 2005</td>
+                            <td>814.00</td>
+              <td>2,305.00</td>
+              <td>
+                2.83              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Shimoga</td -->
+              <td>2005 - 2006</td>
+                            <td>744.00</td>
+              <td>2,107.00</td>
+              <td>
+                2.83              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Shimoga</td -->
+              <td>2006 - 2007</td>
+                            <td>705.00</td>
+              <td>1,996.00</td>
+              <td>
+                2.83              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Shimoga</td -->
+              <td>2007 - 2008</td>
+                            <td>696.00</td>
+              <td>2,660.00</td>
+              <td>
+                3.82              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Shimoga</td -->
+              <td>2008 - 2009</td>
+                            <td>725.00</td>
+              <td>2,433.00</td>
+              <td>
+                3.36              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Shimoga</td -->
+              <td>2009 - 2010</td>
+                            <td>700.00</td>
+              <td>2,349.00</td>
+              <td>
+                3.36              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Shimoga</td -->
+              <td>2010 - 2011</td>
+                            <td>742.00</td>
+              <td>492.20</td>
+              <td>
+                0.66              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Shimoga</td -->
+              <td>2011 - 2012</td>
+                            <td>838.00</td>
+              <td>237.30</td>
+              <td>
+                0.28              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Shimoga</td -->
+              <td>2012 - 2013</td>
+                            <td>973.00</td>
+              <td>2,755.00</td>
+              <td>
+                2.83              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Shimoga</td -->
+              <td>2013 - 2014</td>
+                            <td>1,116.00</td>
+              <td>2,773.00</td>
+              <td>
+                2.48              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Shimoga</td -->
+              <td>2014 - 2015</td>
+                            <td>1,255.00</td>
+              <td>529.30</td>
+              <td>
+                0.42              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Shimoga</td -->
+              <td>2015 - 2016</td>
+                            <td>1,478.00</td>
+              <td>1,836.30</td>
+              <td>
+                1.24              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Shimoga</td -->
+              <td>2016 - 2017</td>
+                            <td>1,378.00</td>
+              <td>803.50</td>
+              <td>
+                0.58              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Shimoga</td -->
+              <td>2017 - 2018</td>
+                            <td>1,722.00</td>
+              <td>1,039.90</td>
+              <td>
+                0.60              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Shimoga</td -->
+              <td>2018 - 2019</td>
+                            <td>4,155.00</td>
+              <td>2,184.20</td>
+              <td>
+                0.53              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Shimoga</td -->
+              <td>2019 - 2020</td>
+                            <td>4,903.00</td>
+              <td>1,504.70</td>
+              <td>
+                0.31              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Shimoga</td -->
+              <td>2020 - 2021</td>
+                            <td>7,177.00</td>
+              <td>3,473.70</td>
+              <td>
+                0.48              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Shimoga</td -->
+              <td>2021 - 2022</td>
+                            <td>5,674.00</td>
+              <td>2,837.10</td>
+              <td>
+                0.50              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Shimoga</td -->
+              <td>2022 - 2023</td>
+                            <td>5,190.00</td>
+              <td>1,660.80</td>
+              <td>
+                0.32              </td>
+            
+
+            </tr>
+                          <tr>
+                        <td rowspan="20">27. Tumkur</td>
+                      <td>2001 - 2002</td>
+                        <td>1.00</td>
+            <td>2.00</td>
+            <td>
+              2.00            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Tumkur</td -->
+              <td>2002 - 2003</td>
+                            <td>8.00</td>
+              <td>18.00</td>
+              <td>
+                2.25              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Tumkur</td -->
+              <td>2003 - 2004</td>
+                            <td>10.00</td>
+              <td>23.00</td>
+              <td>
+                2.30              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Tumkur</td -->
+              <td>2004 - 2005</td>
+                            <td>12.00</td>
+              <td>27.00</td>
+              <td>
+                2.25              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Tumkur</td -->
+              <td>2005 - 2006</td>
+                            <td>12.00</td>
+              <td>27.00</td>
+              <td>
+                2.25              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Tumkur</td -->
+              <td>2006 - 2007</td>
+                            <td>7.00</td>
+              <td>16.00</td>
+              <td>
+                2.29              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Tumkur</td -->
+              <td>2007 - 2008</td>
+                            <td>12.00</td>
+              <td>37.00</td>
+              <td>
+                3.08              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Tumkur</td -->
+              <td>2008 - 2009</td>
+                            <td>7.00</td>
+              <td>30.00</td>
+              <td>
+                4.29              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Tumkur</td -->
+              <td>2009 - 2010</td>
+                            <td>16.00</td>
+              <td>59.00</td>
+              <td>
+                3.69              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Tumkur</td -->
+              <td>2010 - 2011</td>
+                            <td>11.00</td>
+              <td>6.60</td>
+              <td>
+                0.60              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Tumkur</td -->
+              <td>2011 - 2012</td>
+                            <td>1.00</td>
+              <td>0.30</td>
+              <td>
+                0.30              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Tumkur</td -->
+              <td>2012 - 2013</td>
+                            <td>1.00</td>
+              <td>3.00</td>
+              <td>
+                3.00              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Tumkur</td -->
+              <td>2013 - 2014</td>
+                            <td>1.00</td>
+              <td>2.00</td>
+              <td>
+                2.00              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Tumkur</td -->
+              <td>2014 - 2015</td>
+                            <td>31.00</td>
+              <td>18.20</td>
+              <td>
+                0.59              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Tumkur</td -->
+              <td>2015 - 2016</td>
+                            <td>36.00</td>
+              <td>27.50</td>
+              <td>
+                0.76              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Tumkur</td -->
+              <td>2016 - 2017</td>
+                            <td>71.00</td>
+              <td>43.00</td>
+              <td>
+                0.61              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Tumkur</td -->
+              <td>2019 - 2020</td>
+                            <td>44.00</td>
+              <td>17.20</td>
+              <td>
+                0.39              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Tumkur</td -->
+              <td>2020 - 2021</td>
+                            <td>75.00</td>
+              <td>35.30</td>
+              <td>
+                0.47              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Tumkur</td -->
+              <td>2021 - 2022</td>
+                            <td>98.00</td>
+              <td>53.70</td>
+              <td>
+                0.55              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Tumkur</td -->
+              <td>2022 - 2023</td>
+                            <td>57.00</td>
+              <td>14.21</td>
+              <td>
+                0.25              </td>
+            
+
+            </tr>
+                          <tr>
+                        <td rowspan="22">28. Udupi</td>
+                      <td>2001 - 2002</td>
+                        <td>258.00</td>
+            <td>598.00</td>
+            <td>
+              2.32            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Udupi</td -->
+              <td>2002 - 2003</td>
+                            <td>259.00</td>
+              <td>600.00</td>
+              <td>
+                2.32              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Udupi</td -->
+              <td>2003 - 2004</td>
+                            <td>260.00</td>
+              <td>602.00</td>
+              <td>
+                2.32              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Udupi</td -->
+              <td>2004 - 2005</td>
+                            <td>271.00</td>
+              <td>628.00</td>
+              <td>
+                2.32              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Udupi</td -->
+              <td>2005 - 2006</td>
+                            <td>280.00</td>
+              <td>649.00</td>
+              <td>
+                2.32              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Udupi</td -->
+              <td>2006 - 2007</td>
+                            <td>287.00</td>
+              <td>665.00</td>
+              <td>
+                2.32              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Udupi</td -->
+              <td>2007 - 2008</td>
+                            <td>293.00</td>
+              <td>914.00</td>
+              <td>
+                3.12              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Udupi</td -->
+              <td>2008 - 2009</td>
+                            <td>297.00</td>
+              <td>1,258.00</td>
+              <td>
+                4.24              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Udupi</td -->
+              <td>2009 - 2010</td>
+                            <td>294.00</td>
+              <td>1,091.00</td>
+              <td>
+                3.71              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Udupi</td -->
+              <td>2010 - 2011</td>
+                            <td>343.00</td>
+              <td>207.10</td>
+              <td>
+                0.60              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Udupi</td -->
+              <td>2011 - 2012</td>
+                            <td>347.00</td>
+              <td>98.20</td>
+              <td>
+                0.28              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Udupi</td -->
+              <td>2012 - 2013</td>
+                            <td>339.00</td>
+              <td>960.00</td>
+              <td>
+                2.83              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Udupi</td -->
+              <td>2013 - 2014</td>
+                            <td>350.00</td>
+              <td>1,015.00</td>
+              <td>
+                2.90              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Udupi</td -->
+              <td>2014 - 2015</td>
+                            <td>352.00</td>
+              <td>206.60</td>
+              <td>
+                0.59              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Udupi</td -->
+              <td>2015 - 2016</td>
+                            <td>389.00</td>
+              <td>297.70</td>
+              <td>
+                0.77              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Udupi</td -->
+              <td>2016 - 2017</td>
+                            <td>420.00</td>
+              <td>254.50</td>
+              <td>
+                0.61              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Udupi</td -->
+              <td>2017 - 2018</td>
+                            <td>477.00</td>
+              <td>313.10</td>
+              <td>
+                0.66              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Udupi</td -->
+              <td>2018 - 2019</td>
+                            <td>747.00</td>
+              <td>474.00</td>
+              <td>
+                0.63              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Udupi</td -->
+              <td>2019 - 2020</td>
+                            <td>1,251.00</td>
+              <td>490.40</td>
+              <td>
+                0.39              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Udupi</td -->
+              <td>2020 - 2021</td>
+                            <td>1,764.00</td>
+              <td>830.80</td>
+              <td>
+                0.47              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Udupi</td -->
+              <td>2021 - 2022</td>
+                            <td>879.00</td>
+              <td>414.00</td>
+              <td>
+                0.47              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Udupi</td -->
+              <td>2022 - 2023</td>
+                            <td>726.00</td>
+              <td>290.47</td>
+              <td>
+                0.40              </td>
+            
+
+            </tr>
+                          <tr>
+                        <td rowspan="22">29. Uttar kannad</td>
+                      <td>2001 - 2002</td>
+                        <td>159.00</td>
+            <td>389.00</td>
+            <td>
+              2.45            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Uttar kannad</td -->
+              <td>2002 - 2003</td>
+                            <td>134.00</td>
+              <td>328.00</td>
+              <td>
+                2.45              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Uttar kannad</td -->
+              <td>2003 - 2004</td>
+                            <td>164.00</td>
+              <td>401.00</td>
+              <td>
+                2.45              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Uttar kannad</td -->
+              <td>2004 - 2005</td>
+                            <td>176.00</td>
+              <td>430.00</td>
+              <td>
+                2.44              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Uttar kannad</td -->
+              <td>2005 - 2006</td>
+                            <td>234.00</td>
+              <td>572.00</td>
+              <td>
+                2.44              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Uttar kannad</td -->
+              <td>2006 - 2007</td>
+                            <td>254.00</td>
+              <td>621.00</td>
+              <td>
+                2.44              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Uttar kannad</td -->
+              <td>2007 - 2008</td>
+                            <td>247.00</td>
+              <td>814.00</td>
+              <td>
+                3.30              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Uttar kannad</td -->
+              <td>2008 - 2009</td>
+                            <td>323.00</td>
+              <td>1,369.00</td>
+              <td>
+                4.24              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Uttar kannad</td -->
+              <td>2009 - 2010</td>
+                            <td>400.00</td>
+              <td>1,485.00</td>
+              <td>
+                3.71              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Uttar kannad</td -->
+              <td>2010 - 2011</td>
+                            <td>408.00</td>
+              <td>96.10</td>
+              <td>
+                0.24              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Uttar kannad</td -->
+              <td>2011 - 2012</td>
+                            <td>431.00</td>
+              <td>110.90</td>
+              <td>
+                0.26              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Uttar kannad</td -->
+              <td>2012 - 2013</td>
+                            <td>627.00</td>
+              <td>1,614.00</td>
+              <td>
+                2.57              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Uttar kannad</td -->
+              <td>2013 - 2014</td>
+                            <td>624.00</td>
+              <td>1,903.00</td>
+              <td>
+                3.05              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Uttar kannad</td -->
+              <td>2014 - 2015</td>
+                            <td>772.00</td>
+              <td>453.20</td>
+              <td>
+                0.59              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Uttar kannad</td -->
+              <td>2015 - 2016</td>
+                            <td>1,121.00</td>
+              <td>857.90</td>
+              <td>
+                0.77              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Uttar kannad</td -->
+              <td>2016 - 2017</td>
+                            <td>1,183.00</td>
+              <td>1,112.60</td>
+              <td>
+                0.94              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Uttar kannad</td -->
+              <td>2017 - 2018</td>
+                            <td>1,503.00</td>
+              <td>1,395.70</td>
+              <td>
+                0.93              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Uttar kannad</td -->
+              <td>2018 - 2019</td>
+                            <td>4,109.00</td>
+              <td>1,749.20</td>
+              <td>
+                0.43              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Uttar kannad</td -->
+              <td>2019 - 2020</td>
+                            <td>4,787.00</td>
+              <td>2,369.60</td>
+              <td>
+                0.50              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Uttar kannad</td -->
+              <td>2020 - 2021</td>
+                            <td>5,691.00</td>
+              <td>3,545.50</td>
+              <td>
+                0.62              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Uttar kannad</td -->
+              <td>2021 - 2022</td>
+                            <td>4,547.00</td>
+              <td>2,955.70</td>
+              <td>
+                0.65              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Uttar kannad</td -->
+              <td>2022 - 2023</td>
+                            <td>4,044.00</td>
+              <td>3,154.70</td>
+              <td>
+                0.78              </td>
+            
+
+            </tr>
+                          <tr>
+                        <td rowspan="1">30. Vijayanagar</td>
+                      <td>2022 - 2023</td>
+                        <td>24.00</td>
+            <td>17.20</td>
+            <td>
+              0.72            </td>
+          
+
+          </tr>
+                          <tr>
+                        <td rowspan="2">31. Yadgir</td>
+                      <td>2020 - 2021</td>
+                        <td>93.00</td>
+            <td>43.80</td>
+            <td>
+              0.47            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Yadgir</td -->
+              <td>2021 - 2022</td>
+                            <td>10.00</td>
+              <td>5.40</td>
+              <td>
+                0.54              </td>
+            
+
+            </tr>
+                      
+      </tbody>
+      </table>
