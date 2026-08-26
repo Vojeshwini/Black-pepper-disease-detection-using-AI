@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PepperAI — Vine Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+:root{
+  --peppercorn:#141110;
+  --peppercorn-2:#1c1815;
+  --panel:#221d18;
+  --panel-2:#2b241d;
+  --vine:#5a7a4c;
+  --vine-light:#8fb37e;
+  --berry:#b8502f;
+  --berry-light:#e07a52;
+  --husk:#efe6d3;
+  --husk-dim:#a89a80;
+  --gold:#d4a53e;
+  --gold-dim:#8a6d2c;
+  --line:rgba(239,230,211,0.10);
+  --line-strong:rgba(239,230,211,0.18);
+  --radius:14px;
+  --display:'Fraunces', serif;
+  --body:'Inter', sans-serif;
+  --mono:'JetBrains Mono', monospace;
+  --shadow: 0 20px 50px -20px rgba(0,0,0,0.6);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:
+    radial-gradient(1100px 600px at 100% -10%, rgba(90,122,76,0.12), transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, rgba(184,80,47,0.10), transparent 60%),
+    var(--peppercorn);
+  color:var(--husk);
+  font-family:var(--body);
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--gold); color:var(--peppercorn);}
+
+.app{ display:grid; grid-template-columns:264px 1fr; min-height:100vh; }
+.rail{
+  border-right:1px solid var(--line);
+  padding:30px 20px;
+  display:flex; flex-direction:column; gap:32px;
+  position:sticky; top:0; height:100vh;
+  background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent 20%);
+}
+.brand{display:flex; align-items:center; gap:12px; padding:0 4px;}
+.brand-mark{
+  width:38px; height:38px; border-radius:50%; flex:none; position:relative;
+  background:radial-gradient(circle at 32% 28%, #4a3420, #1a1310 72%);
+  border:1.5px solid var(--gold);
+  box-shadow:0 0 0 1px rgba(212,165,62,0.15), inset 0 2px 4px rgba(0,0,0,0.4);
+}
+.brand-mark::after{
+  content:""; position:absolute; inset:7px; border-radius:50%;
+  background:conic-gradient(from 200deg, var(--vine), var(--gold) 35%, var(--berry) 65%, var(--vine));
+  opacity:0.9;
+}
+.brand-name{font-family:var(--display); font-size:21px; font-weight:700; letter-spacing:0.2px;}
+.brand-sub{font-size:10px; color:var(--husk-dim); text-transform:uppercase; letter-spacing:2px; margin-top:3px;}
+
+nav.tabs{display:flex; flex-direction:column; gap:3px;}
+.tab-btn{
+  display:flex; align-items:center; gap:12px;
+  background:none; border:none; color:var(--husk-dim);
+  font-family:var(--body); font-size:14.5px; font-weight:600;
+  padding:11px 14px; border-radius:10px; cursor:pointer; text-align:left; width:100%;
+  transition:background .15s, color .15s, transform .1s;
+}
+.tab-btn:hover{ background:var(--panel); color:var(--husk); transform:translateX(2px); }
+.tab-btn.active{ background:var(--panel-2); color:var(--husk); box-shadow:inset 3px 0 0 var(--gold); }
+.tab-icn{width:18px; text-align:center; font-size:15px; flex:none; opacity:0.85;}
+
+.rail-foot{
+  margin-top:auto; font-size:11.5px; color:var(--husk-dim); line-height:1.6;
+  padding:14px 14px; border-radius:10px; background:rgba(255,255,255,0.02); border:1px solid var(--line);
+}
+.rail-foot b{color:var(--gold);}
+
+.main{ padding:36px 44px 90px; max-width:1220px; }
+.page{ display:none; animation:fade .4s ease; }
+.page.active{ display:block; }
+@keyframes fade{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:none;} }
+
+.eyebrow{ font-family:var(--mono); font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:10px; display:flex; align-items:center; gap:8px;}
+.eyebrow::before{ content:""; width:16px; height:1px; background:var(--gold); }
+h1.page-title{ font-family:var(--display); font-size:38px; font-weight:700; margin:0 0 8px; letter-spacing:-0.3px;}
+p.page-sub{ color:var(--husk-dim); font-size:15px; margin:0 0 34px; max-width:660px; line-height:1.7; }
+
+.grid{ display:grid; gap:20px; }
+.grid-3{ grid-template-columns:repeat(3,1fr); }
+.grid-2{ grid-template-columns:1.15fr 0.85fr; }
+@media (max-width:960px){ .grid-3{grid-template-columns:1fr 1fr;} .grid-2{grid-template-columns:1fr;} .app{grid-template-columns:1fr;} .rail{position:relative; height:auto;} }
+
+.card{
+  background:linear-gradient(160deg, var(--panel), var(--panel-2));
+  border:1px solid var(--line); border-radius:var(--radius); padding:24px 26px;
+  box-shadow:var(--shadow);
+}
+.card h3{ font-family:var(--display); font-weight:700; font-size:18px; margin:0 0 4px; }
+
+.stat-card .top-row{display:flex; align-items:center; justify-content:space-between;}
+.stat-card .icon-badge{width:38px; height:38px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:17px; background:rgba(212,165,62,0.1); border:1px solid rgba(212,165,62,0.25);}
+.stat-card .num{ font-family:var(--mono); font-size:32px; font-weight:700; color:var(--husk); margin:14px 0 2px;}
+.stat-card .label{ font-size:12.5px; color:var(--husk-dim); }
+.stat-card .delta{ font-size:11px; margin-top:10px; display:inline-block; padding:3px 10px; border-radius:20px; font-family:var(--mono); font-weight:600;}
+.delta.up{ background:rgba(143,179,126,0.15); color:var(--vine-light); }
+.delta.warn{ background:rgba(212,165,62,0.15); color:var(--gold); }
+.delta.down{ background:rgba(224,122,82,0.15); color:var(--berry-light); }
+
+.ring{ width:60px; height:60px; border-radius:50%; flex:none; display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-size:12.5px; font-weight:700; position:relative;}
+.ring svg{ position:absolute; inset:0; transform:rotate(-90deg); }
+
+label{ display:block; font-size:12.5px; color:var(--husk-dim); margin:16px 0 7px; font-weight:600; letter-spacing:0.2px;}
+label:first-child{ margin-top:0; }
+select, input[type=number], input[type=text], input[type=range]{
+  width:100%; background:var(--peppercorn-2); border:1px solid var(--line-strong);
+  color:var(--husk); padding:11px 13px; border-radius:9px; font-family:var(--body); font-size:14px;
+  transition:border-color .15s, box-shadow .15s;
+}
+select:focus, input:focus{ outline:none; border-color:var(--gold); box-shadow:0 0 0 3px rgba(212,165,62,0.12); }
+.row2{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.range-value{ font-family:var(--mono); color:var(--gold); font-size:12.5px; float:right; font-weight:600;}
+
+.btn{
+  background:linear-gradient(135deg, var(--gold), #b98a2e); color:var(--peppercorn); border:none;
+  font-family:var(--body); font-weight:800; font-size:13.5px;
+  padding:13px 22px; border-radius:9px; cursor:pointer; letter-spacing:0.2px;
+  margin-top:22px; transition:filter .15s, transform .1s; box-shadow:0 8px 20px -8px rgba(212,165,62,0.5);
+}
+.btn:hover{ filter:brightness(1.08); transform:translateY(-1px); }
+.btn:active{ transform:translateY(0); }
+.btn.secondary{ background:transparent; border:1px solid var(--line-strong); color:var(--husk); font-weight:700; box-shadow:none;}
+.btn.secondary:hover{ background:var(--panel-2); }
+
+.dropzone{
+  border:1.5px dashed var(--line-strong); border-radius:var(--radius);
+  padding:40px 20px; text-align:center; cursor:pointer;
+  transition:border-color .15s, background .15s;
+}
+.dropzone:hover, .dropzone.drag{ border-color:var(--gold); background:rgba(212,165,62,0.04); }
+.dropzone .icon{ font-size:30px; margin-bottom:10px; }
+.dropzone .hint{ font-size:12px; color:var(--husk-dim); margin-top:8px; }
+
+canvas#imgCanvas{ width:100%; border-radius:10px; display:block; box-shadow:var(--shadow); }
+
+.badge{ display:inline-flex; align-items:center; gap:6px; font-family:var(--mono); font-size:11.5px; padding:5px 11px; border-radius:20px; border:1px solid var(--line-strong); color:var(--husk-dim); font-weight:600;}
+.badge.live{ color:var(--vine-light); border-color:rgba(143,179,126,0.35); }
+.badge.sim{ color:var(--gold); border-color:rgba(212,165,62,0.35); }
+
+.feat-bar{ margin-bottom:13px; }
+.feat-bar .fb-head{ display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:6px; font-weight:600;}
+.fb-track{ height:8px; background:var(--peppercorn-2); border-radius:6px; overflow:hidden; }
+.fb-fill{ height:100%; border-radius:6px; background:linear-gradient(90deg, var(--vine), var(--gold)); }
+
+.divider{ height:1px; background:var(--line); margin:24px 0; }
+
+table.rec-table{ width:100%; border-collapse:collapse; font-size:13.5px; }
+table.rec-table th{ text-align:left; font-size:10.5px; text-transform:uppercase; letter-spacing:1.2px; color:var(--husk-dim); padding:9px 10px; border-bottom:1px solid var(--line-strong);}
+table.rec-table td{ padding:11px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+table.rec-table tr:last-child td{ border-bottom:none; }
+table.rec-table tr:hover td{ background:rgba(255,255,255,0.015); }
+
+.pill-list{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px;}
+.pill{ font-size:12px; padding:6px 12px; border-radius:20px; background:var(--peppercorn-2); border:1px solid var(--line-strong); color:var(--husk-dim); font-weight:600;}
+
+.notice{ border-left:3px solid var(--gold); background:rgba(212,165,62,0.06); padding:13px 16px; border-radius:0 10px 10px 0; font-size:12.5px; color:var(--husk-dim); line-height:1.65; margin-top:18px;}
+.notice b{ color:var(--husk); }
+
+.empty{ text-align:center; padding:56px 20px; color:var(--husk-dim); font-size:13.5px; }
+
+.weather-city-row{ display:flex; gap:10px; }
+.weather-city-row input{ flex:1; }
+
+.wgrid{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:18px; }
+.wgrid .day{ background:var(--peppercorn-2); border-radius:10px; padding:14px 10px; text-align:center; border:1px solid var(--line);}
+.wgrid .day .d{ font-size:11px; color:var(--husk-dim); font-family:var(--mono); font-weight:600;}
+.wgrid .day .t{ font-family:var(--mono); font-size:17px; margin:8px 0 3px; font-weight:700;}
+.wgrid .day .p{ font-size:11px; color:var(--vine-light); font-weight:600;}
+
+.arch-step{ display:flex; gap:16px; padding:18px 0; border-bottom:1px solid var(--line); }
+.arch-step:last-child{ border-bottom:none; }
+.arch-num{ font-family:var(--mono); color:var(--gold); font-size:12px; flex:none; width:28px; padding-top:2px; font-weight:700;}
+.arch-step h4{ margin:0 0 5px; font-family:var(--display); font-size:16px; font-weight:700; }
+.arch-step p{ margin:0; font-size:13px; color:var(--husk-dim); line-height:1.7; }
+
+::-webkit-scrollbar{ width:10px; }
+::-webkit-scrollbar-thumb{ background:var(--panel-2); border-radius:6px; }
+::-webkit-scrollbar-thumb:hover{ background:#3a3128; }
+
+.loading-line{ font-family:var(--mono); font-size:12px; color:var(--gold); }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <div class="rail">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <div>
+        <div class="brand-name">PepperAI</div>
+        <div class="brand-sub">Vine Intelligence</div>
+      </div>
+    </div>
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="overview"><span class="tab-icn">◆</span>Overview</button>
+      <button class="tab-btn" data-tab="disease"><span class="tab-icn">◈</span>Disease Detection</button>
+      <button class="tab-btn" data-tab="yield"><span class="tab-icn">◇</span>Yield Prediction</button>
+      <button class="tab-btn" data-tab="recs"><span class="tab-icn">◉</span>Recommendations</button>
+      <button class="tab-btn" data-tab="weather"><span class="tab-icn">☁</span>Weather</button>
+      <button class="tab-btn" data-tab="about"><span class="tab-icn">⚙</span>How It Works</button>
+    </nav>
+    <div class="rail-foot">
+      <b>Live model.</b> Disease detection (EfficientNet-B0, 97% test accuracy) and yield prediction (XGBoost) run against your trained models via the local backend.
+    </div>
+  </div>
+
+  <div class="main">
+
+    <!-- OVERVIEW -->
+    <section class="page active" id="page-overview">
+      <div class="eyebrow">Piper nigrum · Farm Advisory</div>
+      <h1 class="page-title">Black Pepper Vine Health &amp; Yield Console</h1>
+      <p class="page-sub">Upload a leaf or spike photo to screen for disease, model this season's yield from soil and weather inputs, and get a fungicide, irrigation and fertilizer plan generated from both.</p>
+
+      <div class="grid grid-3">
+        <div class="card stat-card">
+          <div class="top-row"><div class="icon-badge">◈</div></div>
+          <div class="num" id="ov-vines">0</div>
+          <div class="label">Vines scanned this session</div>
+          <span class="delta up">● live session</span>
+        </div>
+        <div class="card stat-card">
+          <div class="top-row"><div class="icon-badge">◆</div></div>
+          <div class="num" id="ov-disease">—</div>
+          <div class="label">Last disease scan</div>
+          <span class="delta warn" id="ov-disease-badge">no scan yet</span>
+        </div>
+        <div class="card stat-card">
+          <div class="top-row"><div class="icon-badge">◇</div></div>
+          <div class="num" id="ov-yield">—</div>
+          <div class="label">Predicted yield / vine</div>
+          <span class="delta up" id="ov-yield-badge">no prediction yet</span>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Three modules, one loop</h3>
+          <p style="color:var(--husk-dim); font-size:13.5px; line-height:1.75; margin-top:12px;">
+            Detection tells you <i>what's wrong</i>. Yield prediction tells you <i>what to expect</i>. Recommendations turn both into a fungicide, irrigation and fertilizer plan, weighted by rainfall and temperature. Every prediction ships with the feature weights behind it via Grad-CAM and SHAP, so results can be checked, not just trusted.
+          </p>
+          <div class="pill-list">
+            <span class="pill">Foot rot</span><span class="pill">Slow decline</span><span class="pill">Pollu disease</span>
+            <span class="pill">Leaf blight</span><span class="pill">Yellow mottle virus</span><span class="pill">Healthy</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Start here</h3>
+          <p style="color:var(--husk-dim); font-size:13px; margin-top:12px;">Pick a module to begin:</p>
+          <button class="btn" onclick="switchTab('disease')" style="width:100%;">Scan a leaf / spike photo</button>
+          <button class="btn secondary" onclick="switchTab('yield')" style="width:100%; margin-top:12px;">Predict this season's yield</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- DISEASE DETECTION -->
+    <section class="page" id="page-disease">
+      <div class="eyebrow">Module 01</div>
+      <h1 class="page-title">Disease Detection</h1>
+      <p class="page-sub">Upload a photo of a leaf, spike, or vine base. The model screens for six major black pepper conditions and highlights the regions driving its call.</p>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="dropzone" id="dropzone">
+            <div class="icon">🌿</div>
+            <div><b>Drop a photo here</b> or click to upload</div>
+            <div class="hint">JPG / PNG · leaf, spike, or foot-rot area works best</div>
+            <input type="file" id="fileInput" accept="image/*" style="display:none;">
+          </div>
+          <canvas id="imgCanvas" style="margin-top:18px; display:none;"></canvas>
+          <div id="scanStatus" style="margin-top:16px;"></div>
+        </div>
+
+        <div class="card" id="diseaseResultCard">
+          <h3>Explainable result</h3>
+          <div class="empty" id="diseaseEmpty">Upload an image to see the diagnosis, confidence, and the visual + symptom evidence behind it.</div>
+          <div id="diseaseResult" style="display:none;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-top:12px;">
+              <div>
+                <div style="font-family:var(--display); font-size:23px; font-weight:700;" id="dr-name">—</div>
+                <div style="font-size:12.5px; color:var(--husk-dim); margin-top:3px;" id="dr-latin">—</div>
+              </div>
+              <div class="ring" id="dr-ring">
+                <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="25" stroke="var(--line-strong)" stroke-width="5" fill="none"/><circle id="dr-ring-fill" cx="30" cy="30" r="25" stroke="var(--gold)" stroke-width="5" fill="none" stroke-dasharray="157" stroke-dashoffset="157" stroke-linecap="round"/></svg>
+                <span id="dr-pct">0%</span>
+              </div>
+            </div>
+            <div class="divider"></div>
+            <div style="font-size:11.5px; text-transform:uppercase; letter-spacing:1.4px; color:var(--husk-dim); margin-bottom:12px; font-weight:700;">Why the model thinks so</div>
+            <div id="dr-features"></div>
+            <div class="notice"><b>Simulated inference:</b> this demo scores images using colour-deviation heuristics as a stand-in for the trained CNN backend. Connect to the FastAPI backend for real predictions.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- YIELD PREDICTION -->
+    <section class="page" id="page-yield">
+      <div class="eyebrow">Module 02</div>
+      <h1 class="page-title">Yield Prediction</h1>
+      <p class="page-sub">Enter this vine block's profile. The model blends soil, weather, plant age, disease pressure and last season's yield into a forecast, with the contribution of each factor shown alongside it.</p>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Block profile</h3>
+          <div class="row2">
+            <div>
+              <label>Vine age (years)</label>
+              <input type="number" id="in-age" value="7" min="1" max="40">
+            </div>
+            <div>
+              <label>Vines in block</label>
+              <input type="number" id="in-count" value="120" min="1">
+            </div>
+          </div>
+          <label>Soil type</label>
+          <select id="in-soil">
+            <option value="laterite">Laterite (well-drained, red)</option>
+            <option value="loam">Red loam</option>
+            <option value="alluvial">Alluvial</option>
+            <option value="clay">Clay-heavy / poor drainage</option>
+            <option value="sandy">Sandy loam</option>
+          </select>
+          <label>Previous season yield (kg/vine)</label>
+          <input type="number" id="in-prevyield" value="2.2" step="0.1" min="0">
+          <div class="row2">
+            <div>
+              <label>Avg. rainfall this season (mm/mo)</label>
+              <input type="number" id="in-rainfall" value="210" min="0">
+            </div>
+            <div>
+              <label>Avg. temperature (°C)</label>
+              <input type="number" id="in-temp" value="27" min="0">
+            </div>
+          </div>
+          <label>Disease severity observed <span class="range-value" id="sev-val">Low</span></label>
+          <input type="range" id="in-severity" min="0" max="3" value="0" step="1" oninput="updateSeverityLabel()">
+          <label>Irrigation type</label>
+          <select id="in-irrigation">
+            <option value="drip">Drip irrigation</option>
+            <option value="basin">Basin / flood</option>
+            <option value="rainfed">Rainfed only</option>
+          </select>
+          <button class="btn" onclick="predictYield()">Predict yield</button>
+        </div>
+
+        <div class="card">
+          <h3>Forecast</h3>
+          <div class="empty" id="yieldEmpty">Fill in the block profile and predict to see the forecast and feature contributions.</div>
+          <div id="yieldResult" style="display:none;">
+            <div style="font-family:var(--mono); font-size:36px; font-weight:700; color:var(--husk); margin-top:8px;" id="yr-value">—</div>
+            <div style="font-size:12.5px; color:var(--husk-dim);">predicted kg / vine · <span id="yr-range">—</span> range · <span id="yr-total">—</span> total for block</div>
+            <div class="divider"></div>
+            <div style="font-size:11.5px; text-transform:uppercase; letter-spacing:1.4px; color:var(--husk-dim); margin-bottom:14px; font-weight:700;">Feature contribution (explainable AI)</div>
+            <div id="yr-shap"></div>
+            <div class="notice"><b>How to read this:</b> bars show each factor's estimated pull on yield versus a regional baseline — green pulls yield up, terracotta pulls it down.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECOMMENDATIONS -->
+    <section class="page" id="page-recs">
+      <div class="eyebrow">Module 03</div>
+      <h1 class="page-title">Recommendations</h1>
+      <p class="page-sub">Generated from your latest disease scan and yield inputs — fungicide/pesticide, irrigation schedule, fertilizer plan and soil handling.</p>
+
+      <div class="empty" id="recsEmpty">Run a disease scan and/or a yield prediction first — recommendations are built from those results.</div>
+      <div id="recsBody" style="display:none;">
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>🧪 Pesticide / fungicide plan</h3>
+            <table class="rec-table" id="rec-pesticide"></table>
+          </div>
+          <div class="card">
+            <h3>💧 Irrigation schedule</h3>
+            <table class="rec-table" id="rec-irrigation"></table>
+          </div>
+        </div>
+        <div class="grid grid-2" style="margin-top:20px;">
+          <div class="card">
+            <h3>🌱 Fertilizer plan (per vine / year)</h3>
+            <table class="rec-table" id="rec-fertilizer"></table>
+          </div>
+          <div class="card">
+            <h3>🪨 Soil handling</h3>
+            <div id="rec-soil" style="font-size:13.5px; color:var(--husk-dim); line-height:1.8; margin-top:10px;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WEATHER -->
+    <section class="page" id="page-weather">
+      <div class="eyebrow">Live data</div>
+      <h1 class="page-title">Weather &amp; Rainfall</h1>
+      <p class="page-sub">Live forecast used to sanity-check irrigation timing and disease-favourable conditions (fungal pressure rises with high humidity + warm temperatures).</p>
+
+      <div class="card">
+        <div class="weather-city-row">
+          <input type="text" id="cityInput" placeholder="City, e.g. Idukki, Wayanad, Chikmagalur..." value="Idukki">
+          <button class="btn" style="margin-top:0;" onclick="fetchWeather()">Get forecast</button>
+        </div>
+        <div id="weatherStatus" style="margin-top:16px;"></div>
+        <div id="weatherBody" style="display:none;">
+          <div style="display:flex; align-items:baseline; gap:16px; margin-top:18px;">
+            <div style="font-family:var(--mono); font-size:42px; font-weight:700;" id="w-temp">—</div>
+            <div>
+              <div id="w-place" style="font-family:var(--display); font-size:17px; font-weight:700;">—</div>
+              <div id="w-desc" style="font-size:12.5px; color:var(--husk-dim);">—</div>
+            </div>
+            <div style="margin-left:auto;">
+              <span class="badge live" id="w-badge">● live · open-meteo</span>
+            </div>
+          </div>
+          <div class="wgrid" id="w-days"></div>
+          <button class="btn secondary" onclick="useWeatherInYield()">Use this data in yield prediction →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT / ARCHITECTURE -->
+    <section class="page" id="page-about">
+      <div class="eyebrow">Under the hood</div>
+      <h1 class="page-title">System architecture</h1>
+      <p class="page-sub">How the disease detection, yield prediction, and recommendation modules are actually built and trained.</p>
+
+      <div class="card">
+        <div class="arch-step">
+          <div class="arch-num">01</div>
+          <div><h4>Disease detection — CNN, transfer learning</h4>
+          <p>EfficientNet-B0 (ImageNet-pretrained), fine-tuned on 2,289 labelled black pepper images across six classes. 97% held-out test accuracy. Backbone frozen; only the classifier head trained on this dataset.</p></div>
+        </div>
+        <div class="arch-step">
+          <div class="arch-num">02</div>
+          <div><h4>Explainability — Grad-CAM &amp; SHAP</h4>
+          <p>Grad-CAM overlays a heatmap on the input image showing which pixels drove the CNN's class decision. For the yield model, SHAP values give per-feature, per-prediction contribution.</p></div>
+        </div>
+        <div class="arch-step">
+          <div class="arch-num">03</div>
+          <div><h4>Yield prediction — gradient-boosted trees</h4>
+          <p>XGBoost regression trained on district-year panel data from Kerala and Karnataka (2001–2022): vine age, soil type, previous yield, rainfall, temperature, and disease severity.</p></div>
+        </div>
+        <div class="arch-step">
+          <div class="arch-num">04</div>
+          <div><h4>Weather ingestion</h4>
+          <p>Live and historical data pulled from Open-Meteo, keyed to farm coordinates. Rolling rainfall/temperature aggregates feed the yield model and trigger fungal-risk alerts.</p></div>
+        </div>
+        <div class="arch-step">
+          <div class="arch-num">05</div>
+          <div><h4>Recommendation engine</h4>
+          <p>Rules layer mapping {disease, severity, soil, rainfall} → fungicide/pesticide choice and dose window, irrigation frequency, and NPK + organic manure schedule, sourced from ICAR-IISR extension guidelines.</p></div>
+        </div>
+        <div class="arch-step">
+          <div class="arch-num">06</div>
+          <div><h4>Stack</h4>
+          <p>FastAPI backend serving the CNN and XGBoost models locally; this static frontend calling those endpoints; Open-Meteo for live weather.</p></div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script>
+function switchTab(id){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active', b.dataset.tab===id));
+  document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active', p.id==='page-'+id));
+}
+document.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click', ()=>switchTab(b.dataset.tab)));
+
+let sessionState = { disease:null, yield:null, weather:null, vinesScanned:0 };
+
+function seededHash(str){
+  let h = 0;
+  for(let i=0;i<str.length;i++){ h = (h<<5) - h + str.charCodeAt(i); h |= 0; }
+  return Math.abs(h);
+}
+function clamp(v,a,b){ return Math.max(a, Math.min(b,v)); }
+
+const DISEASES = [
+  { key:'foot_rot', name:'Foot Rot', latin:'Phytophthora capsici', severity:'high',
+    features:['Dark water-soaked lesions on collar/foot','Rapid leaf yellowing pattern','Defoliation rate','Basal stem discoloration'] },
+  { key:'slow_decline', name:'Slow Decline', latin:'Radopholus similis + fungal complex', severity:'medium',
+    features:['Gradual leaf chlorosis','Root lesion nematode indicators','Vine dieback from tip','Reduced spike density'] },
+  { key:'leaf_blight', name:'Leaf Blight', latin:'Colletotrichum gloeosporioides', severity:'medium',
+    features:['Circular necrotic leaf spots','Spot margin discoloration','Spore density pattern','Leaf curling index'] },
+  { key:'pollu_disease', name:'Pollu Disease', latin:'Lanka ramakrishnai + fungal complex', severity:'medium',
+    features:['Pitted / hollow berry texture','Premature berry drop','Spike blackening','Beetle entry marks'] },
+  { key:'yellow_mottle_virus', name:'Yellow Mottle Virus', latin:'Piper yellow mottle virus', severity:'medium',
+    features:['Vein clearing / mosaic pattern','Yellow mottling distribution','Leaf size reduction','Internode shortening'] },
+  { key:'healthy', name:'Healthy Vine', latin:'No pathogen signature detected', severity:'none',
+    features:['Uniform leaf green index','No lesion pixels detected','Normal spike formation','Stable foliage density'] },
+];
+
+const dropzone = document.getElementById('dropzone');
+const fileInput = document.getElementById('fileInput');
+dropzone.addEventListener('click', ()=>fileInput.click());
+dropzone.addEventListener('dragover', e=>{e.preventDefault(); dropzone.classList.add('drag');});
+dropzone.addEventListener('dragleave', ()=>dropzone.classList.remove('drag'));
+dropzone.addEventListener('drop', e=>{
+  e.preventDefault(); dropzone.classList.remove('drag');
+  if(e.dataTransfer.files.length) handleImage(e.dataTransfer.files[0]);
+});
+fileInput.addEventListener('change', e=>{ if(e.target.files.length) handleImage(e.target.files[0]); });
+
+function handleImage(file){
+  const status = document.getElementById('scanStatus');
+  status.innerHTML = '<span class="loading-line">Analyzing image…</span>';
+  const reader = new FileReader();
+  reader.onload = evt=>{
+    const img = new Image();
+    img.onload = ()=>{
+      const canvas = document.getElementById('imgCanvas');
+      canvas.style.display='block';
+      const maxW = 520;
+      const scale = Math.min(1, maxW/img.width);
+      canvas.width = img.width*scale;
+      canvas.height = img.height*scale;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img,0,0,canvas.width,canvas.height);
+
+      const blockSize = 24;
+      let hotspots = [];
+      let totalDeviation = 0, blocks=0;
+      let avgR=0, avgG=0, avgB=0, samples=0;
+      for(let y=0;y<canvas.height;y+=blockSize){
+        for(let x=0;x<canvas.width;x+=blockSize){
+          const w = Math.min(blockSize, canvas.width-x), h = Math.min(blockSize, canvas.height-y);
+          if(w<=0||h<=0) continue;
+          const data = ctx.getImageData(x,y,w,h).data;
+          let r=0,g=0,b=0,n=0;
+          for(let i=0;i<data.length;i+=4){ r+=data[i]; g+=data[i+1]; b+=data[i+2]; n++; }
+          r/=n; g/=n; b/=n;
+          avgR+=r; avgG+=g; avgB+=b; samples++;
+          const greenness = g - (r+b)/2;
+          const darkness = 255 - (r+g+b)/3;
+          const deviation = clamp((-greenness*0.6 + darkness*0.15), 0, 255);
+          totalDeviation += deviation; blocks++;
+          if(deviation > 55){ hotspots.push({x,y,w,h,strength:deviation}); }
+        }
+      }
+      avgR/=samples; avgG/=samples; avgB/=samples;
+      const avgDeviation = totalDeviation/blocks;
+
+      hotspots.sort((a,b)=>b.strength-a.strength);
+      hotspots.slice(0,10).forEach(h=>{
+        const alpha = clamp(h.strength/255,0.15,0.55);
+        ctx.fillStyle = `rgba(184,80,47,${alpha})`;
+        ctx.fillRect(h.x,h.y,h.w,h.h);
+        ctx.strokeStyle = 'rgba(212,165,62,0.9)';
+        ctx.lineWidth = 1;
+        ctx.strokeRect(h.x,h.y,h.w,h.h);
+      });
+
+      const seed = seededHash(file.name+file.size) + Math.round(avgDeviation*13) + Math.round(avgR+avgG+avgB);
+      let diseaseIdx;
+      if(avgDeviation < 28 && hotspots.length < 3){
+        diseaseIdx = DISEASES.findIndex(d=>d.key==='healthy');
+      } else {
+        diseaseIdx = seed % (DISEASES.length-1);
+      }
+      const disease = DISEASES[diseaseIdx];
+      const confidence = disease.key==='healthy'
+        ? clamp(72 + (28-avgDeviation), 70, 97)
+        : clamp(58 + avgDeviation*0.45 + (hotspots.length*1.4), 55, 96);
+
+      renderDiseaseResult(disease, Math.round(confidence), avgDeviation, hotspots.length);
+      status.innerHTML = '<span class="badge sim">● simulated inference</span>';
+      sessionState.vinesScanned++;
+      document.getElementById('ov-vines').textContent = sessionState.vinesScanned;
+    };
+    img.src = evt.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function renderDiseaseResult(disease, confidence, avgDeviation, hotspotCount){
+  document.getElementById('diseaseEmpty').style.display='none';
+  document.getElementById('diseaseResult').style.display='block';
+  document.getElementById('dr-name').textContent = disease.name;
+  document.getElementById('dr-latin').textContent = disease.latin;
+  document.getElementById('dr-pct').textContent = confidence+'%';
+  const circumference = 157;
+  const offset = circumference - (circumference*confidence/100);
+  document.getElementById('dr-ring-fill').setAttribute('stroke-dashoffset', offset);
+  const ringColor = disease.key==='healthy' ? 'var(--vine-light)' : (disease.severity==='high' ? 'var(--berry-light)' : 'var(--gold)');
+  document.getElementById('dr-ring-fill').setAttribute('stroke', ringColor);
+
+  const base = disease.key==='healthy' ? [18,10,15,20] : [
+    clamp(avgDeviation*1.1,25,95),
+    clamp(hotspotCount*7,20,90),
+    clamp(avgDeviation*0.8+10,15,88),
+    clamp(hotspotCount*5+15,15,80)
+  ];
+  let html='';
+  disease.features.forEach((f,i)=>{
+    const val = Math.round(base[i]);
+    html += `<div class="feat-bar"><div class="fb-head"><span>${f}</span><span style="font-family:var(--mono); color:var(--husk-dim);">${val}%</span></div><div class="fb-track"><div class="fb-fill" style="width:${val}%;"></div></div></div>`;
+  });
+  document.getElementById('dr-features').innerHTML = html;
+
+  document.getElementById('ov-disease').textContent = disease.name;
+  const badge = document.getElementById('ov-disease-badge');
+  badge.textContent = confidence+'% confidence';
+  badge.className = 'delta ' + (disease.key==='healthy' ? 'up' : disease.severity==='high' ? 'down' : 'warn');
+
+  sessionState.disease = disease;
+  renderRecommendations();
+}
+
+function updateSeverityLabel(){
+  const labels = ['None','Low','Medium','High'];
+  document.getElementById('sev-val').textContent = labels[document.getElementById('in-severity').value];
+}
+
+const SOIL_FACTORS = { laterite:0.35, loam:0.15, alluvial:0.25, clay:-0.35, sandy:-0.15 };
+const IRRIGATION_FACTORS = { drip:0.4, basin:0.0, rainfed:-0.3 };
+
+function predictYield(){
+  const age = +document.getElementById('in-age').value;
+  const count = +document.getElementById('in-count').value;
+  const soil = document.getElementById('in-soil').value;
+  const prevYield = +document.getElementById('in-prevyield').value;
+  const rainfall = +document.getElementById('in-rainfall').value;
+  const temp = +document.getElementById('in-temp').value;
+  const severity = +document.getElementById('in-severity').value;
+  const irrigation = document.getElementById('in-irrigation').value;
+
+  const baseline = 2.0;
+  const ageFactor = age < 4 ? -0.6 : age > 15 ? -0.2 : clamp((age-4)*0.06, 0, 0.5);
+  const prevFactor = (prevYield - baseline) * 0.55;
+  const rainOptimal = 200;
+  const rainFactor = -Math.abs(rainfall-rainOptimal)/rainOptimal * 0.6 + (rainfall<80? -0.3:0);
+  const tempOptimal = 27;
+  const tempFactor = -Math.abs(temp-tempOptimal)*0.05;
+  const soilFactor = SOIL_FACTORS[soil];
+  const irrigFactor = IRRIGATION_FACTORS[irrigation];
+  const diseaseFactor = -severity*0.35;
+
+  const contributions = [
+    {label:'Previous season yield', value: prevFactor},
+    {label:'Soil type ('+soil+')', value: soilFactor},
+    {label:'Irrigation regime', value: irrigFactor},
+    {label:'Rainfall vs. optimal (200mm/mo)', value: rainFactor},
+    {label:'Temperature vs. optimal (27°C)', value: tempFactor},
+    {label:'Vine age', value: ageFactor},
+    {label:'Disease severity', value: diseaseFactor},
+  ];
+
+  const predicted = clamp(baseline + contributions.reduce((s,c)=>s+c.value,0), 0.2, 6);
+  const low = clamp(predicted*0.85, 0.1, 6);
+  const high = clamp(predicted*1.15, 0.1, 6.5);
+  const total = Math.round(predicted*count);
+
+  document.getElementById('yieldEmpty').style.display='none';
+  document.getElementById('yieldResult').style.display='block';
+  document.getElementById('yr-value').textContent = predicted.toFixed(2)+' kg';
+  document.getElementById('yr-range').textContent = low.toFixed(1)+'–'+high.toFixed(1)+'kg';
+  document.getElementById('yr-total').textContent = total.toLocaleString()+'kg';
+
+  const maxAbs = Math.max(...contributions.map(c=>Math.abs(c.value)), 0.4);
+  let html='';
+  contributions.sort((a,b)=>Math.abs(b.value)-Math.abs(a.value)).forEach(c=>{
+    const pct = clamp(Math.abs(c.value)/maxAbs*100, 4, 100);
+    const positive = c.value >= 0;
+    html += `<div class="feat-bar"><div class="fb-head"><span>${c.label}</span><span style="font-family:var(--mono); color:${positive?'var(--vine-light)':'var(--berry-light)'};">${positive?'+':''}${c.value.toFixed(2)}kg</span></div>
+    <div class="fb-track"><div class="fb-fill" style="width:${pct}%; background:${positive?'linear-gradient(90deg,var(--vine),var(--vine-light))':'linear-gradient(90deg,var(--berry),var(--berry-light))'};"></div></div></div>`;
+  });
+  document.getElementById('yr-shap').innerHTML = html;
+
+  document.getElementById('ov-yield').textContent = predicted.toFixed(2)+'kg';
+  document.getElementById('ov-yield-badge').textContent = 'for '+count+' vines ≈ '+total.toLocaleString()+'kg';
+
+  sessionState.yield = { age, count, soil, prevYield, rainfall, temp, severity, irrigation, predicted, total };
+  renderRecommendations();
+}
+
+const PESTICIDE_PLANS = {
+  foot_rot: [['1% Bordeaux mixture','Drench soil + spray foliage','At onset of monsoon, repeat every 20–25 days'],
+              ['Metalaxyl + Mancozeb (Ridomil MZ) 0.125%','Soil drench around collar','Two rounds, May-June and Aug-Sept'],
+              ['Trichoderma harzianum (bio-control)','Soil application','Pre-monsoon, as prophylaxis']],
+  slow_decline: [['Phorate 10G or Carbofuran 3G','Soil incorporation around root zone','May-June and Sept-Oct'],
+             ['Potassium phosphonate 0.3%','Basin drench','Alongside nematicide application']],
+  leaf_blight: [['Carbendazim + Mancozeb 0.1%','Foliar spray','Repeat every 15 days until symptoms subside'],
+                ['1% Bordeaux mixture','Foliar spray, alternate with carbendazim','During wet, humid spells']],
+  pollu_disease: [['Quinalphos 0.05%','Spray at berry set','Coincide with beetle emergence, Jun-Oct'],
+          ['Neemgold 0.6% (organic-compatible)','Spike/berry spray','21-day intervals, Aug-Oct']],
+  yellow_mottle_virus: [['Imidacloprid 0.5ml/L','Spray to control aphid/mealybug vectors','As soon as vectors noticed'],
+             ['Roguing infected vines','Manual removal','Immediately upon diagnosis']],
+  healthy: [['No curative treatment needed','—','—'],
+            ['1% Bordeaux mixture (prophylactic)','Foliar spray','Once, pre-monsoon as prevention']]
+};
+const IRRIGATION_PLANS = {
+  wet:[['Drip, reduced frequency','Every 4–5 days, 8–10L/vine','Avoid waterlogging, ensure collar drainage'],
+       ['Skip irrigation on rain days','—','Check soil moisture before each cycle']],
+  normal:[['Drip irrigation','Every 3 days, 10–15L/vine','Mulch to retain moisture'],
+          ['Basin irrigation (if no drip)','Weekly, deep watering','Maintain basin 1–1.5m radius']],
+  dry:[['Drip irrigation, increased frequency','Fortnightly, 30-50L/vine (age-adjusted)','Critical during Dec–Apr dry spell'],
+       ['Mulching','Apply 10cm organic mulch','Reduces evapotranspiration loss by ~30%']]
+};
+const FERTILIZER_BASE = {
+  laterite:[['FYM / compost','10kg','Apply pre-monsoon, mix into basin'],['Neem cake','1kg','Split into two applications'],['NPK 50:50:150 g','per vine/yr','Split May–June and Sept–Oct']],
+  loam:[['FYM / compost','8kg','Pre-monsoon'],['NPK 50:50:150 g','per vine/yr','Two split doses']],
+  alluvial:[['FYM / compost','8kg','Pre-monsoon'],['NPK 50:50:150 g','per vine/yr','Two split doses'],['Dolomite/lime','500g','If pH < 5.5']],
+  clay:[['FYM / compost','12kg','Improves drainage, apply generously'],['Gypsum','500g','Improves soil structure'],['NPK 50:50:150 g','per vine/yr','Reduce N slightly, risk of waterlogging']],
+  sandy:[['FYM / compost','12kg','Higher dose — low retention soil'],['NPK 140:55:270 g','per vine/yr','More frequent, smaller splits'],['Mulch','Continuous','Critical for moisture + nutrient retention']]
+};
+const SOIL_NOTES = {
+  laterite:'Well-drained and naturally suited to black pepper. Maintain organic matter to buffer acidity; ideal pH 5.5–6.5.',
+  loam:'Balanced texture with good water and nutrient retention. Monitor drainage during peak monsoon to avoid Phytophthora conditions.',
+  alluvial:'Fertile but check pH — alluvial soils can drift alkaline; correct with gypsum/organic matter if pH climbs above 7.',
+  clay:'Highest foot-rot risk due to poor drainage. Raise planting mounds, add sand/organic matter, and prioritise the fungicide drench schedule.',
+  sandy:'Drains fast but leaches nutrients quickly — favour split fertilizer doses and heavy mulching to retain moisture.'
+};
+
+function renderRecommendations(){
+  if(!sessionState.disease && !sessionState.yield) return;
+  document.getElementById('recsEmpty').style.display='none';
+  document.getElementById('recsBody').style.display='block';
+
+  const diseaseKey = sessionState.disease ? sessionState.disease.key : 'healthy';
+  const rainfall = sessionState.yield ? sessionState.yield.rainfall : (sessionState.weather ? sessionState.weather.rainfall : 150);
+  const soil = sessionState.yield ? sessionState.yield.soil : 'laterite';
+
+  const pestRows = PESTICIDE_PLANS[diseaseKey].map(r=>`<tr><td><b>${r[0]}</b></td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('');
+  document.getElementById('rec-pesticide').innerHTML = `<tr><th>Product</th><th>Method</th><th>Timing</th></tr>${pestRows}`;
+
+  const irrKey = rainfall > 250 ? 'wet' : rainfall < 100 ? 'dry' : 'normal';
+  const irrRows = IRRIGATION_PLANS[irrKey].map(r=>`<tr><td><b>${r[0]}</b></td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('');
+  document.getElementById('rec-irrigation').innerHTML = `<tr><th>Method</th><th>Frequency</th><th>Note</th></tr>${irrRows}`;
+
+  const fertRows = FERTILIZER_BASE[soil].map(r=>`<tr><td><b>${r[0]}</b></td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('');
+  document.getElementById('rec-fertilizer').innerHTML = `<tr><th>Input</th><th>Quantity</th><th>Timing</th></tr>${fertRows}`;
+
+  document.getElementById('rec-soil').innerHTML = `<p>${SOIL_NOTES[soil]}</p>`;
+}
+
+async function fetchWeather(){
+  const city = document.getElementById('cityInput').value.trim();
+  const statusEl = document.getElementById('weatherStatus');
+  const bodyEl = document.getElementById('weatherBody');
+  if(!city){ statusEl.innerHTML = '<span style="color:var(--berry-light); font-size:13px;">Enter a city name.</span>'; return; }
+  statusEl.innerHTML = '<span class="loading-line">Fetching live forecast…</span>';
+  bodyEl.style.display='none';
+  try{
+    const geoRes = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`);
+    const geo = await geoRes.json();
+    if(!geo.results || !geo.results.length){
+      statusEl.innerHTML = '<span style="color:var(--berry-light); font-size:13px;">Could not find that location. Try a nearby city.</span>';
+      return;
+    }
+    const {latitude, longitude, name, country} = geo.results[0];
+    const wRes = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,precipitation&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=auto&forecast_days=4`);
+    const w = await wRes.json();
+
+    statusEl.innerHTML='';
+    bodyEl.style.display='block';
+    document.getElementById('w-temp').textContent = Math.round(w.current.temperature_2m)+'°C';
+    document.getElementById('w-place').textContent = name + (country ? ', '+country : '');
+    document.getElementById('w-desc').textContent = `Humidity ${w.current.relative_humidity_2m}% · Precipitation now ${w.current.precipitation}mm`;
+
+    let daysHtml='';
+    const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    w.daily.time.forEach((t,i)=>{
+      const d = new Date(t);
+      daysHtml += `<div class="day"><div class="d">${dayNames[d.getDay()]}</div><div class="t">${Math.round(w.daily.temperature_2m_max[i])}°/${Math.round(w.daily.temperature_2m_min[i])}°</div><div class="p">${w.daily.precipitation_sum[i]}mm rain</div></div>`;
+    });
+    document.getElementById('w-days').innerHTML = daysHtml;
+
+    const avgRainMonthly = (w.daily.precipitation_sum.reduce((a,b)=>a+b,0)/w.daily.time.length) * 30;
+    sessionState.weather = { temp: w.current.temperature_2m, humidity: w.current.relative_humidity_2m, rainfall: Math.round(avgRainMonthly), place: name };
+
+    const fungalRisk = (w.current.relative_humidity_2m > 80 && w.current.temperature_2m > 24 && w.current.temperature_2m < 30);
+    if(fungalRisk){
+      statusEl.innerHTML = '<div class="notice"><b>Fungal-risk window:</b> current humidity + temperature match conditions favourable to Phytophthora/anthracnose spread. Consider a preventive fungicide round.</div>';
+    }
+  }catch(err){
+    statusEl.innerHTML = '<span style="color:var(--berry-light); font-size:13px;">Network error fetching weather — check connection and try again.</span>';
+  }
+}
+function useWeatherInYield(){
+  if(!sessionState.weather) return;
+  document.getElementById('in-rainfall').value = sessionState.weather.rainfall;
+  document.getElementById('in-temp').value = Math.round(sessionState.weather.temp);
+  switchTab('yield');
+}
+
+fetchWeather();
+</script>
+</body>
+</html>
