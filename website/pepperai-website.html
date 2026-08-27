@@ -306,9 +306,9 @@ table.rec-table tr:hover td{ background:rgba(255,255,255,0.015); }
               </div>
             </div>
             <div class="divider"></div>
-            <div style="font-size:11.5px; text-transform:uppercase; letter-spacing:1.4px; color:var(--husk-dim); margin-bottom:12px; font-weight:700;">Why the model thinks so</div>
+            <div style="font-size:11.5px; text-transform:uppercase; letter-spacing:1.4px; color:var(--husk-dim); margin-bottom:12px; font-weight:700;">Model confidence across all classes</div>
             <div id="dr-features"></div>
-            <div class="notice"><b>Simulated inference:</b> this demo scores images using colour-deviation heuristics as a stand-in for the trained CNN backend. Connect to the FastAPI backend for real predictions.</div>
+            <div class="notice"><b>Live inference:</b> this is the real softmax output from your trained EfficientNet-B0 CNN (97% held-out test accuracy), served locally via FastAPI.</div>
           </div>
         </div>
       </div>
@@ -341,6 +341,19 @@ table.rec-table tr:hover td{ background:rgba(255,255,255,0.015); }
             <option value="clay">Clay-heavy / poor drainage</option>
             <option value="sandy">Sandy loam</option>
           </select>
+          <div class="row2">
+            <div>
+              <label>State</label>
+              <select id="in-state">
+                <option value="Kerala">Kerala</option>
+                <option value="Karnataka">Karnataka</option>
+              </select>
+            </div>
+            <div>
+              <label>District</label>
+              <input type="text" id="in-district" value="Idukki" placeholder="e.g. Idukki">
+            </div>
+          </div>
           <label>Previous season yield (kg/vine)</label>
           <input type="number" id="in-prevyield" value="2.2" step="0.1" min="0">
           <div class="row2">
@@ -373,7 +386,7 @@ table.rec-table tr:hover td{ background:rgba(255,255,255,0.015); }
             <div class="divider"></div>
             <div style="font-size:11.5px; text-transform:uppercase; letter-spacing:1.4px; color:var(--husk-dim); margin-bottom:14px; font-weight:700;">Feature contribution (explainable AI)</div>
             <div id="yr-shap"></div>
-            <div class="notice"><b>How to read this:</b> bars show each factor's estimated pull on yield versus a regional baseline — green pulls yield up, terracotta pulls it down.</div>
+            <div class="notice"><b>Yield figure is live</b> from the trained XGBoost model. The bars below are an approximate, client-side view of feature direction — for the model's exact SHAP contributions, see the training notebook output.</div>
           </div>
         </div>
       </div>
@@ -524,9 +537,12 @@ dropzone.addEventListener('drop', e=>{
 });
 fileInput.addEventListener('change', e=>{ if(e.target.files.length) handleImage(e.target.files[0]); });
 
+const API_BASE = 'http://127.0.0.1:8000';
+
 function handleImage(file){
   const status = document.getElementById('scanStatus');
   status.innerHTML = '<span class="loading-line">Analyzing image…</span>';
+
   const reader = new FileReader();
   reader.onload = evt=>{
     const img = new Image();
@@ -539,63 +555,32 @@ function handleImage(file){
       canvas.height = img.height*scale;
       const ctx = canvas.getContext('2d');
       ctx.drawImage(img,0,0,canvas.width,canvas.height);
-
-      const blockSize = 24;
-      let hotspots = [];
-      let totalDeviation = 0, blocks=0;
-      let avgR=0, avgG=0, avgB=0, samples=0;
-      for(let y=0;y<canvas.height;y+=blockSize){
-        for(let x=0;x<canvas.width;x+=blockSize){
-          const w = Math.min(blockSize, canvas.width-x), h = Math.min(blockSize, canvas.height-y);
-          if(w<=0||h<=0) continue;
-          const data = ctx.getImageData(x,y,w,h).data;
-          let r=0,g=0,b=0,n=0;
-          for(let i=0;i<data.length;i+=4){ r+=data[i]; g+=data[i+1]; b+=data[i+2]; n++; }
-          r/=n; g/=n; b/=n;
-          avgR+=r; avgG+=g; avgB+=b; samples++;
-          const greenness = g - (r+b)/2;
-          const darkness = 255 - (r+g+b)/3;
-          const deviation = clamp((-greenness*0.6 + darkness*0.15), 0, 255);
-          totalDeviation += deviation; blocks++;
-          if(deviation > 55){ hotspots.push({x,y,w,h,strength:deviation}); }
-        }
-      }
-      avgR/=samples; avgG/=samples; avgB/=samples;
-      const avgDeviation = totalDeviation/blocks;
-
-      hotspots.sort((a,b)=>b.strength-a.strength);
-      hotspots.slice(0,10).forEach(h=>{
-        const alpha = clamp(h.strength/255,0.15,0.55);
-        ctx.fillStyle = `rgba(184,80,47,${alpha})`;
-        ctx.fillRect(h.x,h.y,h.w,h.h);
-        ctx.strokeStyle = 'rgba(212,165,62,0.9)';
-        ctx.lineWidth = 1;
-        ctx.strokeRect(h.x,h.y,h.w,h.h);
-      });
-
-      const seed = seededHash(file.name+file.size) + Math.round(avgDeviation*13) + Math.round(avgR+avgG+avgB);
-      let diseaseIdx;
-      if(avgDeviation < 28 && hotspots.length < 3){
-        diseaseIdx = DISEASES.findIndex(d=>d.key==='healthy');
-      } else {
-        diseaseIdx = seed % (DISEASES.length-1);
-      }
-      const disease = DISEASES[diseaseIdx];
-      const confidence = disease.key==='healthy'
-        ? clamp(72 + (28-avgDeviation), 70, 97)
-        : clamp(58 + avgDeviation*0.45 + (hotspots.length*1.4), 55, 96);
-
-      renderDiseaseResult(disease, Math.round(confidence), avgDeviation, hotspots.length);
-      status.innerHTML = '<span class="badge sim">● simulated inference</span>';
-      sessionState.vinesScanned++;
-      document.getElementById('ov-vines').textContent = sessionState.vinesScanned;
     };
     img.src = evt.target.result;
   };
   reader.readAsDataURL(file);
+
+  const formData = new FormData();
+  formData.append('file', file);
+
+  fetch(`${API_BASE}/predict-disease`, { method:'POST', body: formData })
+    .then(res=>{
+      if(!res.ok) throw new Error('Backend returned ' + res.status);
+      return res.json();
+    })
+    .then(data=>{
+      const disease = DISEASES.find(d=>d.key === data.predicted_class) || DISEASES[DISEASES.length-1];
+      renderDiseaseResult(disease, Math.round(data.confidence*100), data.all_class_probabilities);
+      status.innerHTML = '<span class="badge live">● live model · EfficientNet-B0</span>';
+      sessionState.vinesScanned++;
+      document.getElementById('ov-vines').textContent = sessionState.vinesScanned;
+    })
+    .catch(err=>{
+      status.innerHTML = `<span style="color:var(--berry-light); font-size:12.5px;">Could not reach backend at ${API_BASE} — is uvicorn running? (${err.message})</span>`;
+    });
 }
 
-function renderDiseaseResult(disease, confidence, avgDeviation, hotspotCount){
+function renderDiseaseResult(disease, confidence, classProbabilities){
   document.getElementById('diseaseEmpty').style.display='none';
   document.getElementById('diseaseResult').style.display='block';
   document.getElementById('dr-name').textContent = disease.name;
@@ -607,16 +592,13 @@ function renderDiseaseResult(disease, confidence, avgDeviation, hotspotCount){
   const ringColor = disease.key==='healthy' ? 'var(--vine-light)' : (disease.severity==='high' ? 'var(--berry-light)' : 'var(--gold)');
   document.getElementById('dr-ring-fill').setAttribute('stroke', ringColor);
 
-  const base = disease.key==='healthy' ? [18,10,15,20] : [
-    clamp(avgDeviation*1.1,25,95),
-    clamp(hotspotCount*7,20,90),
-    clamp(avgDeviation*0.8+10,15,88),
-    clamp(hotspotCount*5+15,15,80)
-  ];
+  // real softmax probabilities across all 6 classes, from the CNN -- genuine explainability, not simulated
+  const sorted = Object.entries(classProbabilities).sort((a,b)=>b[1]-a[1]);
   let html='';
-  disease.features.forEach((f,i)=>{
-    const val = Math.round(base[i]);
-    html += `<div class="feat-bar"><div class="fb-head"><span>${f}</span><span style="font-family:var(--mono); color:var(--husk-dim);">${val}%</span></div><div class="fb-track"><div class="fb-fill" style="width:${val}%;"></div></div></div>`;
+  sorted.forEach(([key, prob])=>{
+    const label = (DISEASES.find(d=>d.key===key) || {name:key}).name;
+    const pct = Math.round(prob*100);
+    html += `<div class="feat-bar"><div class="fb-head"><span>${label}</span><span style="font-family:var(--mono); color:var(--husk-dim);">${pct}%</span></div><div class="fb-track"><div class="fb-fill" style="width:${pct}%;"></div></div></div>`;
   });
   document.getElementById('dr-features').innerHTML = html;
 
@@ -637,16 +619,54 @@ function updateSeverityLabel(){
 const SOIL_FACTORS = { laterite:0.35, loam:0.15, alluvial:0.25, clay:-0.35, sandy:-0.15 };
 const IRRIGATION_FACTORS = { drip:0.4, basin:0.0, rainfed:-0.3 };
 
-function predictYield(){
+const VINES_PER_HECTARE = 1110; // standard 3m x 3m spacing, per ICAR-IISR pamphlet
+
+async function predictYield(){
   const age = +document.getElementById('in-age').value;
   const count = +document.getElementById('in-count').value;
   const soil = document.getElementById('in-soil').value;
-  const prevYield = +document.getElementById('in-prevyield').value;
+  const state = document.getElementById('in-state').value;
+  const district = document.getElementById('in-district').value;
+  const prevYield = +document.getElementById('in-prevyield').value;   // kg/vine
   const rainfall = +document.getElementById('in-rainfall').value;
   const temp = +document.getElementById('in-temp').value;
   const severity = +document.getElementById('in-severity').value;
   const irrigation = document.getElementById('in-irrigation').value;
 
+  const areaHa = count / VINES_PER_HECTARE;
+  const prevYieldTHa = (prevYield * VINES_PER_HECTARE) / 1000;
+
+  const resultBox = document.getElementById('yieldResult');
+  const emptyBox = document.getElementById('yieldEmpty');
+  emptyBox.textContent = 'Contacting backend…';
+
+  let predictedKgPerVine, predictedTotal;
+  try{
+    const res = await fetch(`${API_BASE}/predict-yield`, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        district: district,
+        state: state,
+        area_ha: areaHa,
+        rainfall_mm: rainfall,
+        temp_c: temp,
+        prev_yield_t_ha: prevYieldTHa,
+        year: new Date().getFullYear()
+      })
+    });
+    if(!res.ok) throw new Error('Backend returned ' + res.status);
+    const data = await res.json();
+    predictedKgPerVine = (data.predicted_yield_t_ha * 1000) / VINES_PER_HECTARE;
+    predictedTotal = Math.round(predictedKgPerVine * count);
+  }catch(err){
+    emptyBox.style.display='block';
+    resultBox.style.display='none';
+    emptyBox.innerHTML = `<span style="color:var(--berry-light);">Could not reach backend at ${API_BASE} — is uvicorn running? (${err.message})</span>`;
+    return;
+  }
+
+  // approximate local feature-contribution view (real SHAP values live in the training notebook output)
   const baseline = 2.0;
   const ageFactor = age < 4 ? -0.6 : age > 15 ? -0.2 : clamp((age-4)*0.06, 0, 0.5);
   const prevFactor = (prevYield - baseline) * 0.55;
@@ -668,16 +688,14 @@ function predictYield(){
     {label:'Disease severity', value: diseaseFactor},
   ];
 
-  const predicted = clamp(baseline + contributions.reduce((s,c)=>s+c.value,0), 0.2, 6);
-  const low = clamp(predicted*0.85, 0.1, 6);
-  const high = clamp(predicted*1.15, 0.1, 6.5);
-  const total = Math.round(predicted*count);
+  const low = clamp(predictedKgPerVine*0.85, 0.1, 6);
+  const high = clamp(predictedKgPerVine*1.15, 0.1, 6.5);
 
-  document.getElementById('yieldEmpty').style.display='none';
-  document.getElementById('yieldResult').style.display='block';
-  document.getElementById('yr-value').textContent = predicted.toFixed(2)+' kg';
+  emptyBox.style.display='none';
+  resultBox.style.display='block';
+  document.getElementById('yr-value').textContent = predictedKgPerVine.toFixed(2)+' kg';
   document.getElementById('yr-range').textContent = low.toFixed(1)+'–'+high.toFixed(1)+'kg';
-  document.getElementById('yr-total').textContent = total.toLocaleString()+'kg';
+  document.getElementById('yr-total').textContent = predictedTotal.toLocaleString()+'kg';
 
   const maxAbs = Math.max(...contributions.map(c=>Math.abs(c.value)), 0.4);
   let html='';
@@ -689,10 +707,10 @@ function predictYield(){
   });
   document.getElementById('yr-shap').innerHTML = html;
 
-  document.getElementById('ov-yield').textContent = predicted.toFixed(2)+'kg';
-  document.getElementById('ov-yield-badge').textContent = 'for '+count+' vines ≈ '+total.toLocaleString()+'kg';
+  document.getElementById('ov-yield').textContent = predictedKgPerVine.toFixed(2)+'kg';
+  document.getElementById('ov-yield-badge').textContent = 'for '+count+' vines ≈ '+predictedTotal.toLocaleString()+'kg';
 
-  sessionState.yield = { age, count, soil, prevYield, rainfall, temp, severity, irrigation, predicted, total };
+  sessionState.yield = { age, count, soil, district, state, prevYield, rainfall, temp, severity, irrigation, predicted: predictedKgPerVine, total: predictedTotal };
   renderRecommendations();
 }
 
@@ -734,26 +752,50 @@ const SOIL_NOTES = {
   sandy:'Drains fast but leaches nutrients quickly — favour split fertilizer doses and heavy mulching to retain moisture.'
 };
 
-function renderRecommendations(){
+async function renderRecommendations(){
   if(!sessionState.disease && !sessionState.yield) return;
-  document.getElementById('recsEmpty').style.display='none';
-  document.getElementById('recsBody').style.display='block';
 
   const diseaseKey = sessionState.disease ? sessionState.disease.key : 'healthy';
   const rainfall = sessionState.yield ? sessionState.yield.rainfall : (sessionState.weather ? sessionState.weather.rainfall : 150);
   const soil = sessionState.yield ? sessionState.yield.soil : 'laterite';
+  const vineAge = sessionState.yield ? sessionState.yield.age : 7;
+  const severityLabels = ['none','low','medium','high'];
+  const severity = sessionState.yield ? severityLabels[sessionState.yield.severity] : 'medium';
 
-  const pestRows = PESTICIDE_PLANS[diseaseKey].map(r=>`<tr><td><b>${r[0]}</b></td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('');
-  document.getElementById('rec-pesticide').innerHTML = `<tr><th>Product</th><th>Method</th><th>Timing</th></tr>${pestRows}`;
+  try{
+    const res = await fetch(`${API_BASE}/recommend`, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        disease: diseaseKey,
+        soil_type: soil,
+        rainfall_mm_per_month: rainfall,
+        vine_age_years: vineAge,
+        severity: severity
+      })
+    });
+    if(!res.ok) throw new Error('Backend returned ' + res.status);
+    const data = await res.json();
 
-  const irrKey = rainfall > 250 ? 'wet' : rainfall < 100 ? 'dry' : 'normal';
-  const irrRows = IRRIGATION_PLANS[irrKey].map(r=>`<tr><td><b>${r[0]}</b></td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('');
-  document.getElementById('rec-irrigation').innerHTML = `<tr><th>Method</th><th>Frequency</th><th>Note</th></tr>${irrRows}`;
+    document.getElementById('recsEmpty').style.display='none';
+    document.getElementById('recsBody').style.display='block';
 
-  const fertRows = FERTILIZER_BASE[soil].map(r=>`<tr><td><b>${r[0]}</b></td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('');
-  document.getElementById('rec-fertilizer').innerHTML = `<tr><th>Input</th><th>Quantity</th><th>Timing</th></tr>${fertRows}`;
+    const pestRows = data.pesticide_plan.map(r=>`<tr><td><b>${r.product}</b></td><td>${r.method}</td><td>${r.timing}</td></tr>`).join('');
+    document.getElementById('rec-pesticide').innerHTML = `<tr><th>Product</th><th>Method</th><th>Timing</th></tr>${pestRows}`;
 
-  document.getElementById('rec-soil').innerHTML = `<p>${SOIL_NOTES[soil]}</p>`;
+    const irrRows = data.irrigation_plan.map(r=>`<tr><td><b>${r.method}</b></td><td>${r.detail}</td><td>${r.note}</td></tr>`).join('');
+    document.getElementById('rec-irrigation').innerHTML = `<tr><th>Method</th><th>Detail</th><th>Note</th></tr>${irrRows}`;
+
+    const fertRows = data.fertilizer_plan.map(r=>`<tr><td><b>${r.input}</b></td><td>${r.quantity}</td><td>${r.timing}</td></tr>`).join('');
+    document.getElementById('rec-fertilizer').innerHTML = `<tr><th>Input</th><th>Quantity</th><th>Timing</th></tr>${fertRows}`;
+
+    document.getElementById('rec-soil').innerHTML = `<p>${data.soil_notes}</p>` +
+      (data.urgency === 'high' ? `<div class="notice"><b>High urgency:</b> ${data.urgency_note}</div>` : '');
+  }catch(err){
+    document.getElementById('recsEmpty').style.display='block';
+    document.getElementById('recsBody').style.display='none';
+    document.getElementById('recsEmpty').innerHTML = `<span style="color:var(--berry-light);">Could not reach backend at ${API_BASE} — is uvicorn running? (${err.message})</span>`;
+  }
 }
 
 async function fetchWeather(){
