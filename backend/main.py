@@ -91,11 +91,14 @@ else:
     print(f"[startup] WARNING: yield model not found at {YIELD_MODEL_PATH}")
 
 district_map, state_map = {}, {}
+district_map_lower, state_map_lower = {}, {}
 if os.path.exists(DISTRICT_ENCODING_PATH):
     with open(DISTRICT_ENCODING_PATH) as f:
         enc = json.load(f)
         district_map = {v: int(k) for k, v in enc["district_map"].items()}
         state_map = {v: int(k) for k, v in enc["state_map"].items()}
+        district_map_lower = {k.lower(): v for k, v in district_map.items()}
+        state_map_lower = {k.lower(): v for k, v in state_map.items()}
     print(f"[startup] Loaded {len(district_map)} districts, {len(state_map)} states")
 else:
     print(f"[startup] WARNING: district encoding not found at {DISTRICT_ENCODING_PATH}")
@@ -149,8 +152,8 @@ async def predict_yield(payload: YieldInput):
     if not os.path.exists(YIELD_MODEL_PATH):
         raise HTTPException(status_code=503, detail="Yield model not loaded on server.")
 
-    district_code = district_map.get(payload.district, -1)
-    state_code = state_map.get(payload.state, -1)
+    district_code = district_map_lower.get(payload.district.strip().lower(), -1)
+    state_code = state_map_lower.get(payload.state.strip().lower(), -1)
 
     features = np.array([[
         payload.area_ha,

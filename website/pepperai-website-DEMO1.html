@@ -344,14 +344,14 @@ table.rec-table tr:hover td{ background:rgba(255,255,255,0.015); }
           <div class="row2">
             <div>
               <label>State</label>
-              <select id="in-state" onchange="populateDistricts()">
+              <select id="in-state">
                 <option value="Kerala">Kerala</option>
                 <option value="Karnataka">Karnataka</option>
               </select>
             </div>
             <div>
               <label>District</label>
-              <select id="in-district"></select>
+              <input type="text" id="in-district" value="Idukki" placeholder="e.g. Idukki">
             </div>
           </div>
           <label>Previous season yield (kg/vine)</label>
@@ -387,7 +387,6 @@ table.rec-table tr:hover td{ background:rgba(255,255,255,0.015); }
             <div style="font-size:11.5px; text-transform:uppercase; letter-spacing:1.4px; color:var(--husk-dim); margin-bottom:14px; font-weight:700;">Feature contribution (explainable AI)</div>
             <div id="yr-shap"></div>
             <div class="notice"><b>Yield figure is live</b> from the trained XGBoost model. The bars below are an approximate, client-side view of feature direction — for the model's exact SHAP contributions, see the training notebook output.</div>
-            <div id="yr-recognition-warning"></div>
           </div>
         </div>
       </div>
@@ -540,19 +539,6 @@ fileInput.addEventListener('change', e=>{ if(e.target.files.length) handleImage(
 
 const API_BASE = 'http://127.0.0.1:8000';
 
-// exact district names used in model training (from Kerala.xls / Karnataka.xls, Directorate of Economics & Statistics APY data)
-const DISTRICTS_BY_STATE = {
-  Kerala: ['Alappuzha', 'Ernakulam', 'Idukki', 'Kannur', 'Kasaragod', 'Kollam', 'Kottayam', 'Kozhikode', 'Malappuram', 'Palakkad', 'Pathanamthitta', 'Thiruvananthapuram', 'Thrissur', 'Wayanad'],
-  Karnataka: ['Bagalkot', 'Bangalore rural', 'Belgaum', 'Bellary', 'Bengaluru urban', 'Bidar', 'Bijapur', 'Chamarajanagar', 'Chikballapur', 'Chikmagalur', 'Chitradurga', 'Dakshin kannad', 'Davangere', 'Dharwad', 'Gadag', 'Gulbarga', 'Hassan', 'Haveri', 'Kodagu', 'Kolar', 'Koppal', 'Mandya', 'Mysore', 'Raichur', 'Ramanagara', 'Shimoga', 'Tumkur', 'Udupi', 'Uttar kannad', 'Vijayanagar', 'Yadgir']
-};
-
-function populateDistricts(){
-  const state = document.getElementById('in-state').value;
-  const districtSelect = document.getElementById('in-district');
-  districtSelect.innerHTML = DISTRICTS_BY_STATE[state].map(d => `<option value="${d}">${d}</option>`).join('');
-}
-populateDistricts(); // run once on page load
-
 function handleImage(file){
   const status = document.getElementById('scanStatus');
   status.innerHTML = '<span class="loading-line">Analyzing image…</span>';
@@ -673,7 +659,6 @@ async function predictYield(){
     const data = await res.json();
     predictedKgPerVine = (data.predicted_yield_t_ha * 1000) / VINES_PER_HECTARE;
     predictedTotal = Math.round(predictedKgPerVine * count);
-    window._lastYieldRecognition = { district: data.district_recognized, state: data.state_recognized };
   }catch(err){
     emptyBox.style.display='block';
     resultBox.style.display='none';
@@ -724,15 +709,6 @@ async function predictYield(){
 
   document.getElementById('ov-yield').textContent = predictedKgPerVine.toFixed(2)+'kg';
   document.getElementById('ov-yield-badge').textContent = 'for '+count+' vines ≈ '+predictedTotal.toLocaleString()+'kg';
-
-  const warnBox = document.getElementById('yr-recognition-warning');
-  const rec = window._lastYieldRecognition || {district:true, state:true};
-  if(!rec.district || !rec.state){
-    const unrecognized = [!rec.district && 'district', !rec.state && 'state'].filter(Boolean).join(' and ');
-    warnBox.innerHTML = `<div class="notice" style="border-left-color:var(--berry);"><b>Note:</b> the ${unrecognized} you entered wasn't recognized in the training data (check spelling/capitalization). The model used a generic fallback instead of location-specific patterns — the number above is less precise than it would be with a matched location.</div>`;
-  } else {
-    warnBox.innerHTML = '';
-  }
 
   sessionState.yield = { age, count, soil, district, state, prevYield, rainfall, temp, severity, irrigation, predicted: predictedKgPerVine, total: predictedTotal };
   renderRecommendations();

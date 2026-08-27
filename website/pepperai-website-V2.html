@@ -344,14 +344,14 @@ table.rec-table tr:hover td{ background:rgba(255,255,255,0.015); }
           <div class="row2">
             <div>
               <label>State</label>
-              <select id="in-state" onchange="populateDistricts()">
+              <select id="in-state">
                 <option value="Kerala">Kerala</option>
                 <option value="Karnataka">Karnataka</option>
               </select>
             </div>
             <div>
               <label>District</label>
-              <select id="in-district"></select>
+              <input type="text" id="in-district" value="Idukki" placeholder="e.g. Idukki">
             </div>
           </div>
           <label>Previous season yield (kg/vine)</label>
@@ -539,19 +539,6 @@ dropzone.addEventListener('drop', e=>{
 fileInput.addEventListener('change', e=>{ if(e.target.files.length) handleImage(e.target.files[0]); });
 
 const API_BASE = 'http://127.0.0.1:8000';
-
-// exact district names used in model training (from Kerala.xls / Karnataka.xls, Directorate of Economics & Statistics APY data)
-const DISTRICTS_BY_STATE = {
-  Kerala: ['Alappuzha', 'Ernakulam', 'Idukki', 'Kannur', 'Kasaragod', 'Kollam', 'Kottayam', 'Kozhikode', 'Malappuram', 'Palakkad', 'Pathanamthitta', 'Thiruvananthapuram', 'Thrissur', 'Wayanad'],
-  Karnataka: ['Bagalkot', 'Bangalore rural', 'Belgaum', 'Bellary', 'Bengaluru urban', 'Bidar', 'Bijapur', 'Chamarajanagar', 'Chikballapur', 'Chikmagalur', 'Chitradurga', 'Dakshin kannad', 'Davangere', 'Dharwad', 'Gadag', 'Gulbarga', 'Hassan', 'Haveri', 'Kodagu', 'Kolar', 'Koppal', 'Mandya', 'Mysore', 'Raichur', 'Ramanagara', 'Shimoga', 'Tumkur', 'Udupi', 'Uttar kannad', 'Vijayanagar', 'Yadgir']
-};
-
-function populateDistricts(){
-  const state = document.getElementById('in-state').value;
-  const districtSelect = document.getElementById('in-district');
-  districtSelect.innerHTML = DISTRICTS_BY_STATE[state].map(d => `<option value="${d}">${d}</option>`).join('');
-}
-populateDistricts(); // run once on page load
 
 function handleImage(file){
   const status = document.getElementById('scanStatus');
