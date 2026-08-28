@@ -913,7 +913,6 @@ function useWeatherInYield(){
   document.getElementById('in-rainfall').value = sessionState.weather.rainfall;
   document.getElementById('in-temp').value = Math.round(sessionState.weather.temp);
   switchTab('yield');
-  predictYield(); // re-run immediately so the forecast reflects the new weather data, not the stale one
 }
 
 fetchWeather();
