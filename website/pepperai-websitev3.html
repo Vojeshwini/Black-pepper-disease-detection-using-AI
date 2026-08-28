@@ -354,21 +354,20 @@ table.rec-table tr:hover td{ background:rgba(255,255,255,0.015); }
               <select id="in-district"></select>
             </div>
           </div>
-          <label>Previous season yield (kg/vine) <span style="font-weight:400; color:var(--husk-dim); text-transform:none; letter-spacing:0;">— typical range 0.5–4 kg</span></label>
-          <input type="number" id="in-prevyield" value="2.2" step="0.1" min="0" max="6">
+          <label>Previous season yield (kg/vine)</label>
+          <input type="number" id="in-prevyield" value="2.2" step="0.1" min="0">
           <div class="row2">
             <div>
-              <label>Avg. rainfall this season (mm/mo) <span style="font-weight:400; color:var(--husk-dim); text-transform:none; letter-spacing:0;">— 80–300 typical</span></label>
-              <input type="number" id="in-rainfall" value="210" min="0" max="600">
+              <label>Avg. rainfall this season (mm/mo)</label>
+              <input type="number" id="in-rainfall" value="210" min="0">
             </div>
             <div>
-              <label>Avg. temperature (°C) <span style="font-weight:400; color:var(--husk-dim); text-transform:none; letter-spacing:0;">— 10–40 tolerated, 23–32 ideal</span></label>
-              <input type="number" id="in-temp" value="27" min="10" max="40">
+              <label>Avg. temperature (°C)</label>
+              <input type="number" id="in-temp" value="27" min="0">
             </div>
           </div>
           <label>Disease severity observed <span class="range-value" id="sev-val">Low</span></label>
           <input type="range" id="in-severity" min="0" max="3" value="0" step="1" oninput="updateSeverityLabel()">
-          <div style="font-size:11.5px; color:var(--husk-dim); margin-top:6px;">Applied as a documented yield-loss adjustment on top of the model's raw output (see notice below) — the trained model itself was not given disease severity as a training feature.</div>
           <label>Irrigation type</label>
           <select id="in-irrigation">
             <option value="drip">Drip irrigation</option>
@@ -387,8 +386,7 @@ table.rec-table tr:hover td{ background:rgba(255,255,255,0.015); }
             <div class="divider"></div>
             <div style="font-size:11.5px; text-transform:uppercase; letter-spacing:1.4px; color:var(--husk-dim); margin-bottom:14px; font-weight:700;">Feature contribution (explainable AI)</div>
             <div id="yr-shap"></div>
-            <div class="notice"><b>Yield figure is live</b> from the trained XGBoost model, with severity and irrigation adjustments applied on top (see breakdown below) — for the model's exact SHAP contributions, see the training notebook output.</div>
-            <div id="yr-adjustment-breakdown"></div>
+            <div class="notice"><b>Yield figure is live</b> from the trained XGBoost model. The bars below are an approximate, client-side view of feature direction — for the model's exact SHAP contributions, see the training notebook output.</div>
             <div id="yr-recognition-warning"></div>
           </div>
         </div>
@@ -649,11 +647,6 @@ async function predictYield(){
   const severity = +document.getElementById('in-severity').value;
   const irrigation = document.getElementById('in-irrigation').value;
 
-  const outOfRangeWarnings = [];
-  if(prevYield < 0.3 || prevYield > 4.5) outOfRangeWarnings.push(`Previous yield (${prevYield} kg/vine) is outside the typical training range (0.5–4 kg/vine) — treat this prediction as a rough extrapolation, not a precise estimate.`);
-  if(rainfall > 350) outOfRangeWarnings.push(`Rainfall (${rainfall} mm/mo) is unusually high — verify this figure.`);
-  if(temp < 15 || temp > 35) outOfRangeWarnings.push(`Temperature (${temp}°C) is outside black pepper's favourable range (23–32°C ideal, 10–40°C tolerated).`);
-
   const areaHa = count / VINES_PER_HECTARE;
   const prevYieldTHa = (prevYield * VINES_PER_HECTARE) / 1000;
 
@@ -678,18 +671,9 @@ async function predictYield(){
     });
     if(!res.ok) throw new Error('Backend returned ' + res.status);
     const data = await res.json();
-    var rawKgPerVine = (data.predicted_yield_t_ha * 1000) / VINES_PER_HECTARE;
-
-    // Documented post-model adjustments -- the trained XGBoost model has no severity or
-    // irrigation-type feature (the yield dataset didn't record these), so these are applied
-    // as separate, disclosed corrections sourced from the ICAR-IISR pamphlet, not the model itself.
-    const SEVERITY_PENALTY = {0:0, 1:0.05, 2:0.15, 3:0.35};  // fraction yield loss; foot rot/slow decline can cause vine collapse at high severity
-    const IRRIGATION_MULTIPLIER = {rainfed:1.0, basin:1.15, drip:1.4};  // ICAR-IISR: summer drip irrigation raises productivity 90-100% vs unirrigated; partial factor applied here for a general-season estimate
-
-    predictedKgPerVine = rawKgPerVine * (1 - SEVERITY_PENALTY[severity]) * IRRIGATION_MULTIPLIER[irrigation];
+    predictedKgPerVine = (data.predicted_yield_t_ha * 1000) / VINES_PER_HECTARE;
     predictedTotal = Math.round(predictedKgPerVine * count);
     window._lastYieldRecognition = { district: data.district_recognized, state: data.state_recognized };
-    window._lastYieldRaw = rawKgPerVine;
   }catch(err){
     emptyBox.style.display='block';
     resultBox.style.display='none';
@@ -741,29 +725,14 @@ async function predictYield(){
   document.getElementById('ov-yield').textContent = predictedKgPerVine.toFixed(2)+'kg';
   document.getElementById('ov-yield-badge').textContent = 'for '+count+' vines ≈ '+predictedTotal.toLocaleString()+'kg';
 
-  const sevLabels = ['None','Low','Medium','High'];
-  const sevPenaltyPct = [0,5,15,35][severity];
-  const irrigBoostPct = Math.round(({rainfed:0, basin:15, drip:40})[irrigation]);
-  const rawVal = window._lastYieldRaw || predictedKgPerVine;
-  document.getElementById('yr-adjustment-breakdown').innerHTML = `
-    <div style="font-size:12.5px; color:var(--husk-dim); line-height:2; margin-top:14px; padding:12px 14px; background:var(--peppercorn-2); border-radius:8px;">
-      <div>Raw model output: <span style="font-family:var(--mono); color:var(--husk);">${rawVal.toFixed(2)} kg/vine</span></div>
-      <div>Severity adjustment (${sevLabels[severity]}): <span style="font-family:var(--mono); color:${sevPenaltyPct>0?'var(--berry-light)':'var(--husk-dim)'};">−${sevPenaltyPct}%</span></div>
-      <div>Irrigation adjustment (${irrigation}): <span style="font-family:var(--mono); color:${irrigBoostPct>0?'var(--vine-light)':'var(--husk-dim)'};">+${irrigBoostPct}%</span></div>
-      <div style="border-top:1px solid var(--line); margin-top:6px; padding-top:6px;">Final: <span style="font-family:var(--mono); color:var(--gold);">${predictedKgPerVine.toFixed(2)} kg/vine</span></div>
-    </div>`;
-
   const warnBox = document.getElementById('yr-recognition-warning');
-  let warnHtml = '';
-  if(outOfRangeWarnings.length){
-    warnHtml += `<div class="notice" style="border-left-color:var(--berry);"><b>Input range check:</b> ${outOfRangeWarnings.join(' ')}</div>`;
-  }
   const rec = window._lastYieldRecognition || {district:true, state:true};
   if(!rec.district || !rec.state){
     const unrecognized = [!rec.district && 'district', !rec.state && 'state'].filter(Boolean).join(' and ');
-    warnHtml += `<div class="notice" style="border-left-color:var(--berry);"><b>Note:</b> the ${unrecognized} you entered wasn't recognized in the training data. The model used a generic fallback instead of location-specific patterns — the number above is less precise than it would be with a matched location.</div>`;
+    warnBox.innerHTML = `<div class="notice" style="border-left-color:var(--berry);"><b>Note:</b> the ${unrecognized} you entered wasn't recognized in the training data (check spelling/capitalization). The model used a generic fallback instead of location-specific patterns — the number above is less precise than it would be with a matched location.</div>`;
+  } else {
+    warnBox.innerHTML = '';
   }
-  warnBox.innerHTML = warnHtml;
 
   sessionState.yield = { age, count, soil, district, state, prevYield, rainfall, temp, severity, irrigation, predicted: predictedKgPerVine, total: predictedTotal };
   renderRecommendations();
