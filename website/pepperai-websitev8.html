@@ -219,7 +219,7 @@ table.rec-table tr:hover td{ background:rgba(255,255,255,0.015); }
     </nav>
     <div class="rail-foot">
       <b>Live model.</b> Disease detection (EfficientNet-B0, 97% test accuracy) and yield prediction (XGBoost) run against your trained models via the local backend.
-      <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--line); font-family:var(--mono); color:var(--gold); font-size:10.5px;">BUILD v11</div>
+      <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--line); font-family:var(--mono); color:var(--gold); font-size:10.5px;">BUILD v10</div>
     </div>
   </div>
 
@@ -367,14 +367,8 @@ table.rec-table tr:hover td{ background:rgba(255,255,255,0.015); }
               <input type="number" id="in-temp" value="27" min="10" max="40">
             </div>
           </div>
-          <label>Disease severity observed <span class="range-value" id="sev-val">None</span></label>
+          <label>Disease severity observed <span class="range-value" id="sev-val">Low</span></label>
           <input type="range" id="in-severity" min="0" max="3" value="0" step="1" oninput="updateSeverityLabel()">
-          <div style="display:flex; justify-content:space-between; margin-top:6px; font-size:11px; font-family:var(--mono);" id="sev-ticks">
-            <span data-level="0">None</span>
-            <span data-level="1">Low</span>
-            <span data-level="2">Medium</span>
-            <span data-level="3">High</span>
-          </div>
           <div style="font-size:11.5px; color:var(--husk-dim); margin-top:6px;">Applied as a documented yield-loss adjustment on top of the model's raw output (see notice below) — the trained model itself was not given disease severity as a training feature.</div>
           <label>Irrigation type</label>
           <select id="in-irrigation">
@@ -683,15 +677,8 @@ function renderDiseaseResult(disease, confidence, classProbabilities){
 
 function updateSeverityLabel(){
   const labels = ['None','Low','Medium','High'];
-  const currentLevel = document.getElementById('in-severity').value;
-  document.getElementById('sev-val').textContent = labels[currentLevel];
-  document.querySelectorAll('#sev-ticks span').forEach(el=>{
-    const isActive = el.dataset.level === currentLevel;
-    el.style.color = isActive ? 'var(--gold)' : 'var(--husk-dim)';
-    el.style.fontWeight = isActive ? '700' : '400';
-  });
+  document.getElementById('sev-val').textContent = labels[document.getElementById('in-severity').value];
 }
-updateSeverityLabel(); // set initial highlight on page load
 
 const SOIL_FACTORS = { laterite:0.35, loam:0.15, alluvial:0.25, clay:-0.35, sandy:-0.15 };
 const IRRIGATION_FACTORS = { drip:0.4, basin:0.0, rainfed:-0.3 };
