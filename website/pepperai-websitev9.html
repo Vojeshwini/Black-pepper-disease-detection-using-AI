@@ -219,7 +219,7 @@ table.rec-table tr:hover td{ background:rgba(255,255,255,0.015); }
     </nav>
     <div class="rail-foot">
       <b>Live model.</b> Disease detection (EfficientNet-B0, 97% test accuracy) and yield prediction (XGBoost) run against your trained models via the local backend.
-      <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--line); font-family:var(--mono); color:var(--gold); font-size:10.5px;">BUILD v12</div>
+      <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--line); font-family:var(--mono); color:var(--gold); font-size:10.5px;">BUILD v11</div>
     </div>
   </div>
 
@@ -368,14 +368,13 @@ table.rec-table tr:hover td{ background:rgba(255,255,255,0.015); }
             </div>
           </div>
           <label>Disease severity observed <span class="range-value" id="sev-val">None</span></label>
-          <input type="range" id="in-severity" min="0" max="3" value="0" step="1" oninput="updateSeverityLabel(); markSeverityManual();">
+          <input type="range" id="in-severity" min="0" max="3" value="0" step="1" oninput="updateSeverityLabel()">
           <div style="display:flex; justify-content:space-between; margin-top:6px; font-size:11px; font-family:var(--mono);" id="sev-ticks">
             <span data-level="0">None</span>
             <span data-level="1">Low</span>
             <span data-level="2">Medium</span>
             <span data-level="3">High</span>
           </div>
-          <div id="sev-auto-note" style="font-size:11.5px; color:var(--husk-dim); margin-top:8px; line-height:1.6;">Not yet set from a scan — run a Disease Detection scan first, or set this manually based on field observation.</div>
           <div style="font-size:11.5px; color:var(--husk-dim); margin-top:6px;">Applied as a documented yield-loss adjustment on top of the model's raw output (see notice below) — the trained model itself was not given disease severity as a training feature.</div>
           <label>Irrigation type</label>
           <select id="in-irrigation">
@@ -678,43 +677,8 @@ function renderDiseaseResult(disease, confidence, classProbabilities){
   badge.textContent = confidence+'% confidence';
   badge.className = 'delta ' + (disease.key==='healthy' ? 'up' : disease.severity==='high' ? 'down' : 'warn');
 
-  applyAutoSeverity(disease, confidence);
-
   sessionState.disease = disease;
   renderRecommendations();
-}
-
-// Maps disease type -> a starting severity level. This is a DEFAULT, not a measurement --
-// the CNN sees one leaf photo; it has no way to know what fraction of the whole plantation
-// is affected, which is what "severity" for yield purposes actually needs. So this auto-sets
-// a sensible starting point (destructive diseases like foot rot default higher, per ICAR-IISR),
-// but always stays manually adjustable since only the farmer knows the real field-level extent.
-const SEVERITY_DEFAULT_BY_DISEASE = {
-  healthy: 0,             // None
-  leaf_blight: 1,          // Low -- generally manageable with fungicide rotation
-  yellow_mottle_virus: 2,  // Medium -- spreads via vectors, no cure, but gradual
-  pollu_disease: 2,        // Medium -- damages berries, not usually fatal to the vine
-  slow_decline: 2,         // Medium -- gradual, but can progress
-  foot_rot: 3,              // High -- ICAR-IISR: "most destructive of all diseases," can collapse a vine within a month
-};
-
-function applyAutoSeverity(disease, confidence){
-  let level = SEVERITY_DEFAULT_BY_DISEASE[disease.key] ?? 1;
-  if(confidence < 60 && level > 2) level = 2; // don't auto-alarm on a low-confidence scan
-  document.getElementById('in-severity').value = level;
-  updateSeverityLabel();
-
-  const note = document.getElementById('sev-auto-note');
-  if(note){
-    note.innerHTML = disease.key === 'healthy'
-      ? `Set to <b>None</b> automatically — your last scan detected a healthy vine.`
-      : `Set to <b>${['None','Low','Medium','High'][level]}</b> automatically from your last scan (<b>${disease.name}</b>, ${confidence}% confidence). This reflects that one disease type, not how much of your plantation is affected — adjust the slider if it doesn't match what you're seeing in the field.`;
-  }
-}
-
-function markSeverityManual(){
-  const note = document.getElementById('sev-auto-note');
-  if(note) note.innerHTML = `Manually set — no longer following the disease scan default.`;
 }
 
 function updateSeverityLabel(){
