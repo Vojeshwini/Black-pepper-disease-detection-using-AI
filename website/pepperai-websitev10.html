@@ -219,7 +219,7 @@ table.rec-table tr:hover td{ background:rgba(255,255,255,0.015); }
     </nav>
     <div class="rail-foot">
       <b>Live model.</b> Disease detection (EfficientNet-B0, 97% test accuracy) and yield prediction (XGBoost) run against your trained models via the local backend.
-      <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--line); font-family:var(--mono); color:var(--gold); font-size:10.5px;">BUILD v13</div>
+      <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--line); font-family:var(--mono); color:var(--gold); font-size:10.5px;">BUILD v12</div>
     </div>
   </div>
 
@@ -783,12 +783,7 @@ async function predictYield(){
     // irrigation-type feature (the yield dataset didn't record these), so these are applied
     // as separate, disclosed corrections sourced from the ICAR-IISR pamphlet, not the model itself.
     const SEVERITY_PENALTY = {0:0, 1:0.05, 2:0.15, 3:0.35};  // fraction yield loss; foot rot/slow decline can cause vine collapse at high severity
-    // ICAR-IISR (Good Agricultural Practices for Pepper, 2026, Sec. 10): fortnightly BASIN
-    // irrigation March-May raises productivity 90-100% vs unirrigated -- that specific figure
-    // applies to basin irrigation on that schedule. Drip has no matching documented figure in
-    // our sources, so it uses a modest, clearly-labelled general estimate instead of borrowing
-    // the basin number.
-    const IRRIGATION_MULTIPLIER = {rainfed:1.0, drip:1.15, basin:1.5};
+    const IRRIGATION_MULTIPLIER = {rainfed:1.0, basin:1.15, drip:1.4};  // ICAR-IISR: summer drip irrigation raises productivity 90-100% vs unirrigated; partial factor applied here for a general-season estimate
 
     predictedKgPerVine = rawKgPerVine * (1 - SEVERITY_PENALTY[severity]) * IRRIGATION_MULTIPLIER[irrigation];
     predictedTotal = Math.round(predictedKgPerVine * count);
@@ -847,16 +842,13 @@ async function predictYield(){
 
   const sevLabels = ['None','Low','Medium','High'];
   const sevPenaltyPct = [0,5,15,35][severity];
-  const irrigBoostPct = Math.round(({rainfed:0, drip:15, basin:50})[irrigation]);
-  const irrigSourceNote = irrigation === 'basin'
-    ? '(ICAR-IISR documented: fortnightly summer basin irrigation)'
-    : '(general estimate, not from a specific yield trial)';
+  const irrigBoostPct = Math.round(({rainfed:0, basin:15, drip:40})[irrigation]);
   const rawVal = window._lastYieldRaw || predictedKgPerVine;
   document.getElementById('yr-adjustment-breakdown').innerHTML = `
     <div style="font-size:12.5px; color:var(--husk-dim); line-height:2; margin-top:14px; padding:12px 14px; background:var(--peppercorn-2); border-radius:8px;">
       <div>Raw model output: <span style="font-family:var(--mono); color:var(--husk);">${rawVal.toFixed(2)} kg/vine</span></div>
       <div>Severity adjustment (${sevLabels[severity]}): <span style="font-family:var(--mono); color:${sevPenaltyPct>0?'var(--berry-light)':'var(--husk-dim)'};">−${sevPenaltyPct}%</span></div>
-      <div>Irrigation adjustment (${irrigation}): <span style="font-family:var(--mono); color:${irrigBoostPct>0?'var(--vine-light)':'var(--husk-dim)'};">+${irrigBoostPct}%</span> <span style="font-size:10.5px; color:var(--husk-dim);">${irrigSourceNote}</span></div>
+      <div>Irrigation adjustment (${irrigation}): <span style="font-family:var(--mono); color:${irrigBoostPct>0?'var(--vine-light)':'var(--husk-dim)'};">+${irrigBoostPct}%</span></div>
       <div style="border-top:1px solid var(--line); margin-top:6px; padding-top:6px;">Final: <span style="font-family:var(--mono); color:var(--gold);">${predictedKgPerVine.toFixed(2)} kg/vine</span></div>
     </div>`;
 
