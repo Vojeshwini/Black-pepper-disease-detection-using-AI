@@ -219,7 +219,6 @@ table.rec-table tr:hover td{ background:rgba(255,255,255,0.015); }
     </nav>
     <div class="rail-foot">
       <b>Live model.</b> Disease detection (EfficientNet-B0, 97% test accuracy) and yield prediction (XGBoost) run against your trained models via the local backend.
-      <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--line); font-family:var(--mono); color:var(--gold); font-size:10.5px;">BUILD v9</div>
     </div>
   </div>
 
@@ -434,42 +433,6 @@ table.rec-table tr:hover td{ background:rgba(255,255,255,0.015); }
       <p class="page-sub">Live forecast used to sanity-check irrigation timing and disease-favourable conditions (fungal pressure rises with high humidity + warm temperatures).</p>
 
       <div class="card">
-        <label style="margin-top:0;">Quick-select a pepper district</label>
-        <select id="citySelect" onchange="selectCityFromDropdown()">
-          <option value="">— choose a district (or type any city below) —</option>
-          <optgroup label="Kerala">
-            <option value="Alappuzha">Alappuzha</option>
-            <option value="Ernakulam">Ernakulam</option>
-            <option value="Idukki">Idukki</option>
-            <option value="Kannur">Kannur</option>
-            <option value="Kasaragod">Kasaragod</option>
-            <option value="Kollam">Kollam</option>
-            <option value="Kottayam">Kottayam</option>
-            <option value="Kozhikode">Kozhikode</option>
-            <option value="Malappuram">Malappuram</option>
-            <option value="Palakkad">Palakkad</option>
-            <option value="Pathanamthitta">Pathanamthitta</option>
-            <option value="Thiruvananthapuram">Thiruvananthapuram</option>
-            <option value="Thrissur">Thrissur</option>
-            <option value="Wayanad">Wayanad</option>
-          </optgroup>
-          <optgroup label="Karnataka">
-            <option value="Bagalkot">Bagalkot</option>
-            <option value="Belgaum">Belgaum</option>
-            <option value="Bellary">Bellary</option>
-            <option value="Chikmagalur">Chikmagalur</option>
-            <option value="Chitradurga">Chitradurga</option>
-            <option value="Dakshina Kannada">Dakshina Kannada (Mangalore)</option>
-            <option value="Davangere">Davangere</option>
-            <option value="Dharwad">Dharwad</option>
-            <option value="Hassan">Hassan</option>
-            <option value="Kodagu">Kodagu (Coorg)</option>
-            <option value="Mysore">Mysore</option>
-            <option value="Shimoga">Shimoga</option>
-            <option value="Udupi">Udupi</option>
-          </optgroup>
-        </select>
-        <div style="margin-top:14px;"></div>
         <div class="weather-city-row">
           <input type="text" id="cityInput" placeholder="City, e.g. Idukki, Wayanad, Chikmagalur..." value="Idukki">
           <button class="btn" style="margin-top:0;" onclick="fetchWeather()">Get forecast</button>
@@ -900,13 +863,6 @@ async function renderRecommendations(){
     document.getElementById('recsBody').style.display='none';
     document.getElementById('recsEmpty').innerHTML = `<span style="color:var(--berry-light);">Could not reach backend at ${API_BASE} — is uvicorn running? (${err.message})</span>`;
   }
-}
-
-function selectCityFromDropdown(){
-  const selected = document.getElementById('citySelect').value;
-  if(!selected) return;
-  document.getElementById('cityInput').value = selected;
-  fetchWeather();
 }
 
 async function fetchWeather(){
